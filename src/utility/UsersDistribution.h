@@ -26,6 +26,7 @@
 #include "../core/cartesianCoodrdinates/CartesianCoordinates.h"
 #include "CellPosition.h"
 #include "../componentManagers/NetworkManager.h"
+#include "Femtocell.h"
 
 #include <vector>
 #include <iostream>

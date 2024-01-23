@@ -512,7 +512,7 @@ DEBUG_LOG_START_1(SIM_ENV_SCHEDULER_DEBUG)
         {
           cout << " " << metrics[jj][ii];
         }
-      cout << endl;
+      //cout << endl;
     }
 DEBUG_LOG_END
 

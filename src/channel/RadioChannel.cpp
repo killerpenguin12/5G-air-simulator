@@ -52,7 +52,6 @@ RadioChannel::StartTx (shared_ptr<PacketBurst> p, TransmittedSignal* txSignal, N
 DEBUG_LOG_START_1(SIM_ENV_TEST_DEVICE_ON_CHANNEL)
   cout << "RadioChannel::StartTx ch " << GetChannelId () << endl;
 DEBUG_LOG_END
-
   Simulator::Init()->Schedule(0.001,
                               &RadioChannel::StartRx,
                               this,
@@ -64,7 +63,7 @@ DEBUG_LOG_START_1(SIM_ENV_TRANSMISSION_DEBUG)
 DEBUG_LOG_END
 
 }
-
+// I think this is it
 void
 RadioChannel::StartRx (shared_ptr<PacketBurst> p, TransmittedSignal* txSignal, NetworkNode* src)
 {
@@ -98,7 +97,9 @@ DEBUG_LOG_END
       //DELIVERY THE BURST OF PACKETS
       if(dst->GetNodeType() != NetworkNode::TYPE_MULTICAST_DESTINATION)
         {
+          //COULTON this is where the StartRx is called. Here it is printed
           dst->GetPhy ()->StartRx (p->Copy (), rxSignal);
+          //dst->GetPhy ()->StartRx (p->Copy (), rxSignal);
         }
       else
         {
@@ -217,3 +218,10 @@ RadioChannel::GetChannelId (void)
 {
   return m_channelId;
 }
+
+// string 
+// RadioChannel::GetResults()
+// {
+//   std::cout << results;
+//   return results;
+// }

@@ -191,7 +191,7 @@ DEBUG_LOG_END
       random = random * zoneWidth;
       distance = random + (double) low;
       cout <<" DISTANCE " << distance;
-      cout << endl;
+      //cout << endl;
 
       sign = (rand() % 2) * 2 - 1;
       posX=distance / sqrt(2) * sign;

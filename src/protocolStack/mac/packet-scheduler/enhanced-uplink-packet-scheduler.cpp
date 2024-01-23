@@ -144,7 +144,7 @@ DEBUG_LOG_START_1(SIM_ENV_SCHEDULER_DEBUG)
           //cout  << setw(3) << metrics[jj][ii]/1000 << " ";
           printf("%3d  ", (int) (metrics[jj][ii]/1000.0));
         }
-      cout << endl;
+      //cout << endl;
     }
 DEBUG_LOG_END
 

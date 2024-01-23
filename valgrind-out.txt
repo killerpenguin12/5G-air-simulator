@@ -1,0 +1,1205 @@
+==32424== Memcheck, a memory error detector
+==32424== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==32424== Using Valgrind-3.19.0-8d3c8034b8-20220411 and LibVEX; rerun with -h for copyright info
+==32424== Command: ./5G-air-simulator SingleCellWithI 7 1 1 0 0 1 0 1 1 3 0.1 128
+==32424== Parent PID: 19462
+==32424== 
+--32424-- 
+--32424-- Valgrind options:
+--32424--    --leak-check=full
+--32424--    --show-leak-kinds=all
+--32424--    --track-origins=yes
+--32424--    --verbose
+--32424--    --log-file=valgrind-out.txt
+--32424-- Contents of /proc/version:
+--32424--   Linux version 5.15.0-73-generic (buildd@bos03-amd64-038) (gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #80~20.04.1-Ubuntu SMP Wed May 17 14:58:14 UTC 2023
+--32424-- 
+--32424-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--32424-- Page sizes: currently 4096, max supported 4096
+--32424-- Valgrind library directory: /usr/local/libexec/valgrind
+--32424-- Reading syms from /home/jonathan/Desktop/5G_uav_sim/5G-air-simulator/5G-air-simulator
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--32424--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
+--32424--   .. build-id is valid
+--32424-- Reading syms from /usr/local/libexec/valgrind/memcheck-amd64-linux
+--32424--    object doesn't have a dynamic symbol table
+--32424-- Scheduler: using generic scheduler lock implementation.
+--32424-- Reading suppressions file: /usr/local/libexec/valgrind/default.supp
+==32424== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-32424-by-jonathan-on-???
+==32424== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-32424-by-jonathan-on-???
+==32424== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-32424-by-jonathan-on-???
+==32424== 
+==32424== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==32424== don't want to do, unless you know exactly what you're doing,
+==32424== or are doing some strange experiment):
+==32424==   /usr/local/libexec/valgrind/../../bin/vgdb --pid=32424 ...command...
+==32424== 
+==32424== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==32424==   /path/to/gdb ./5G-air-simulator
+==32424== and then give GDB the following command
+==32424==   target remote | /usr/local/libexec/valgrind/../../bin/vgdb --pid=32424
+==32424== --pid is optional if only one valgrind process is running
+==32424== 
+--32424-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580cec02 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--32424-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580cec1c (vgPlain_amd64_linux_REDIR_FOR_index)
+--32424-- Reading syms from /usr/local/libexec/valgrind/vgpreload_core-amd64-linux.so
+--32424-- Reading syms from /usr/local/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==32424== WARNING: new redirection conflicts with existing -- ignoring it
+--32424--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580cec02 vgPlain_amd64_linux_REDIR_FOR_strlen
+--32424--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x04842760 strlen
+--32424-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x48436d0 (strcmp)
+--32424-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x48475d0 (mempcpy)
+--32424-- Reading syms from /usr/lib/libarmadillo.so.9.800.4
+--32424--    object doesn't have a symbol table
+--32424-- Reading syms from /home/jonathan/Desktop/5G_uav_sim/5G-air-simulator/fast-fading.so
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+--32424--    object doesn't have a symbol table
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
+--32424--   Considering /usr/lib/debug/.build-id/fe/91b4090ea04c1559ff71dd9290062776618891.debug ..
+--32424--   .. build-id is valid
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+--32424--    object doesn't have a symbol table
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--32424--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
+--32424--   .. build-id is valid
+==32424== WARNING: new redirection conflicts with existing -- ignoring it
+--32424--     old: 0x04ce2250 (memalign            ) R-> (1011.0) 0x048419fd memalign
+--32424--     new: 0x04ce2250 (memalign            ) R-> (1017.0) 0x048419d0 aligned_alloc
+==32424== WARNING: new redirection conflicts with existing -- ignoring it
+--32424--     old: 0x04ce2250 (memalign            ) R-> (1011.0) 0x048419fd memalign
+--32424--     new: 0x04ce2250 (memalign            ) R-> (1017.0) 0x048419a3 aligned_alloc
+==32424== WARNING: new redirection conflicts with existing -- ignoring it
+--32424--     old: 0x04ce2250 (memalign            ) R-> (1011.0) 0x048419fd memalign
+--32424--     new: 0x04ce2250 (memalign            ) R-> (1017.0) 0x048419d0 aligned_alloc
+==32424== WARNING: new redirection conflicts with existing -- ignoring it
+--32424--     old: 0x04ce2250 (memalign            ) R-> (1011.0) 0x048419fd memalign
+--32424--     new: 0x04ce2250 (memalign            ) R-> (1017.0) 0x048419a3 aligned_alloc
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/atlas/libblas.so.3.10.3
+--32424--    object doesn't have a symbol table
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/atlas/liblapack.so.3.10.3
+--32424--    object doesn't have a symbol table
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/libarpack.so.2.1.0
+--32424--    object doesn't have a symbol table
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/libsuperlu.so.5.2.1
+--32424--    object doesn't have a symbol table
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/libgfortran.so.5.0.0
+--32424--    object doesn't have a symbol table
+--32424-- Reading syms from /usr/lib/x86_64-linux-gnu/libquadmath.so.0.0.0
+--32424--    object doesn't have a symbol table
+--32424-- REDIR: 0x4ce7480 (libc.so.6:memmove) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+==32424== Preferring higher priority redirection:
+--32424--     old: 0x04dd26e0 (__memcpy_avx_unalign) R-> (2018.0) 0x04844b00 __memcpy_avx_unaligned_erms
+--32424--     new: 0x04dd26e0 (__memcpy_avx_unalign) R-> (2018.1) 0x048465a0 memmove
+--32424-- REDIR: 0x4ce6780 (libc.so.6:strncpy) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce77b0 (libc.so.6:strcasecmp) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce60a0 (libc.so.6:strcat) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce67e0 (libc.so.6:rindex) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce8c50 (libc.so.6:rawmemchr) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4d03ce0 (libc.so.6:wmemchr) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4d03820 (libc.so.6:wcscmp) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce75e0 (libc.so.6:mempcpy) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce7410 (libc.so.6:bcmp) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce6710 (libc.so.6:strncmp) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce6150 (libc.so.6:strcmp) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce7540 (libc.so.6:memset) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4d037e0 (libc.so.6:wcschr) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce6670 (libc.so.6:strnlen) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce6230 (libc.so.6:strcspn) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce7800 (libc.so.6:strncasecmp) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce61d0 (libc.so.6:strcpy) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce7950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4d04f50 (libc.so.6:wcsnlen) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4d03860 (libc.so.6:wcscpy) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce6820 (libc.so.6:strpbrk) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce6100 (libc.so.6:index) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce6630 (libc.so.6:strlen) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4cefbb0 (libc.so.6:memrchr) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce7850 (libc.so.6:strcasecmp_l) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce73d0 (libc.so.6:memchr) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4d03930 (libc.so.6:wcslen) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce6ae0 (libc.so.6:strspn) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce7750 (libc.so.6:stpncpy) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce76f0 (libc.so.6:stpcpy) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce8c90 (libc.so.6:strchrnul) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4ce78a0 (libc.so.6:strncasecmp_l) redirected to 0x48311bb (_vgnU_ifunc_wrapper)
+--32424-- REDIR: 0x4dcf500 (libc.so.6:__strrchr_avx2) redirected to 0x4842110 (rindex)
+--32424-- REDIR: 0x4ce2b10 (libc.so.6:calloc) redirected to 0x48413f1 (calloc)
+--32424-- REDIR: 0x4ce10e0 (libc.so.6:malloc) redirected to 0x483c7df (malloc)
+--32424-- REDIR: 0x4dd26e0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48465a0 (memmove)
+--32424-- REDIR: 0x4dcf6d0 (libc.so.6:__strlen_avx2) redirected to 0x4842640 (strlen)
+--32424-- REDIR: 0x4dcbcc0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x4845cc0 (bcmp)
+--32424-- REDIR: 0x4dcabd0 (libc.so.6:__strcmp_avx2) redirected to 0x48435d0 (strcmp)
+--32424-- REDIR: 0x49a3b20 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x483cf71 (operator new(unsigned long))
+--32424-- REDIR: 0x4dd26c0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4847210 (mempcpy)
+--32424-- REDIR: 0x4dcf310 (libc.so.6:__strchrnul_avx2) redirected to 0x48470f0 (strchrnul)
+--32424-- REDIR: 0x4dd2b60 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x4846490 (memset)
+--32424-- REDIR: 0x4dcb530 (libc.so.6:__memchr_avx2) redirected to 0x4843750 (memchr)
+--32424-- REDIR: 0x49a1d70 (libstdc++.so.6:operator delete(void*)) redirected to 0x483f5df (operator delete(void*))
+--32424-- REDIR: 0x4ce16d0 (libc.so.6:free) redirected to 0x483f051 (free)
+==32424== 
+==32424== HEAP SUMMARY:
+==32424==     in use at exit: 37,992 bytes in 440 blocks
+==32424==   total heap usage: 60,366 allocs, 59,926 frees, 6,258,956 bytes allocated
+==32424== 
+==32424== Searching for pointers to 440 not-freed blocks
+==32424== Checked 1,093,904 bytes
+==32424== 
+==32424== 8 bytes in 1 blocks are still reachable in loss record 1 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF12C: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:31)
+==32424==    by 0x12ADFE: Gateway::Gateway() (Gateway.cpp:33)
+==32424==    by 0x325487: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 8 bytes in 1 blocks are still reachable in loss record 2 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x214CF9: __gnu_cxx::new_allocator<Gateway*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x214499: std::allocator_traits<std::allocator<Gateway*> >::allocate(std::allocator<Gateway*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x2131C5: std::__cxx1998::_Vector_base<Gateway*, std::allocator<Gateway*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x2108AA: void std::__cxx1998::vector<Gateway*, std::allocator<Gateway*> >::_M_realloc_insert<Gateway* const&>(__gnu_cxx::__normal_iterator<Gateway**, std::__cxx1998::vector<Gateway*, std::allocator<Gateway*> > >, Gateway* const&) (vector.tcc:440)
+==32424==    by 0x20DFE9: std::__cxx1998::vector<Gateway*, std::allocator<Gateway*> >::push_back(Gateway* const&) (stl_vector.h:1195)
+==32424==    by 0x20C2AD: std::__debug::vector<Gateway*, std::allocator<Gateway*> >::push_back(Gateway* const&) (vector:477)
+==32424==    by 0x3254B2: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:253)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 8 bytes in 1 blocks are still reachable in loss record 3 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF12C: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:31)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 8 bytes in 1 blocks are still reachable in loss record 4 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x3257B4: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:296)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 8 bytes in 1 blocks are still reachable in loss record 5 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x14D213: __gnu_cxx::new_allocator<UserEquipment*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x14C367: std::allocator_traits<std::allocator<UserEquipment*> >::allocate(std::allocator<UserEquipment*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x14A3F3: std::__cxx1998::_Vector_base<UserEquipment*, std::allocator<UserEquipment*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x148FAC: void std::__cxx1998::vector<UserEquipment*, std::allocator<UserEquipment*> >::_M_realloc_insert<UserEquipment* const&>(__gnu_cxx::__normal_iterator<UserEquipment**, std::__cxx1998::vector<UserEquipment*, std::allocator<UserEquipment*> > >, UserEquipment* const&) (vector.tcc:440)
+==32424==    by 0x1460B5: std::__cxx1998::vector<UserEquipment*, std::allocator<UserEquipment*> >::push_back(UserEquipment* const&) (stl_vector.h:1195)
+==32424==    by 0x143F2B: std::__debug::vector<UserEquipment*, std::allocator<UserEquipment*> >::push_back(UserEquipment* const&) (vector:477)
+==32424==    by 0x325815: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:299)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 8 bytes in 1 blocks are still reachable in loss record 6 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x13F435: __gnu_cxx::new_allocator<GNodeB::UserEquipmentRecord*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x13D899: std::allocator_traits<std::allocator<GNodeB::UserEquipmentRecord*> >::allocate(std::allocator<GNodeB::UserEquipmentRecord*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x13B4A3: std::__cxx1998::_Vector_base<GNodeB::UserEquipmentRecord*, std::allocator<GNodeB::UserEquipmentRecord*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x1387AC: void std::__cxx1998::vector<GNodeB::UserEquipmentRecord*, std::allocator<GNodeB::UserEquipmentRecord*> >::_M_realloc_insert<GNodeB::UserEquipmentRecord* const&>(__gnu_cxx::__normal_iterator<GNodeB::UserEquipmentRecord**, std::__cxx1998::vector<GNodeB::UserEquipmentRecord*, std::allocator<GNodeB::UserEquipmentRecord*> > >, GNodeB::UserEquipmentRecord* const&) (vector.tcc:440)
+==32424==    by 0x135347: std::__cxx1998::vector<GNodeB::UserEquipmentRecord*, std::allocator<GNodeB::UserEquipmentRecord*> >::insert(__gnu_cxx::__normal_iterator<GNodeB::UserEquipmentRecord* const*, std::__cxx1998::vector<GNodeB::UserEquipmentRecord*, std::allocator<GNodeB::UserEquipmentRecord*> > >, GNodeB::UserEquipmentRecord* const&) (vector.tcc:161)
+==32424==    by 0x132ADA: std::__debug::vector<GNodeB::UserEquipmentRecord*, std::allocator<GNodeB::UserEquipmentRecord*> >::insert(__gnu_debug::_Safe_iterator<__gnu_cxx::__normal_iterator<GNodeB::UserEquipmentRecord* const*, std::__cxx1998::vector<GNodeB::UserEquipmentRecord*, std::allocator<GNodeB::UserEquipmentRecord*> > >, std::__debug::vector<GNodeB::UserEquipmentRecord*, std::allocator<GNodeB::UserEquipmentRecord*> >, std::random_access_iterator_tag>, GNodeB::UserEquipmentRecord* const&) (vector:546)
+==32424==    by 0x12ED4C: GNodeB::RegisterUserEquipment(UserEquipment*) (GNodeB.cpp:135)
+==32424==    by 0x325842: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:302)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 16 bytes in 1 blocks are still reachable in loss record 7 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF150: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:33)
+==32424==    by 0x12ADFE: Gateway::Gateway() (Gateway.cpp:33)
+==32424==    by 0x325487: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 16 bytes in 1 blocks are still reachable in loss record 8 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF150: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:33)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 16 bytes in 1 blocks are still reachable in loss record 9 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12BC5A: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:54)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 24 bytes in 1 blocks are still reachable in loss record 10 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2EA09E: HandoverEntity::HandoverEntity() (handover-entity.cpp:33)
+==32424==    by 0x2E8785: RrcEntity::RrcEntity() (rrc-entity.cpp:38)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12ADFE: Gateway::Gateway() (Gateway.cpp:33)
+==32424==    by 0x325487: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 24 bytes in 1 blocks are still reachable in loss record 11 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2EA09E: HandoverEntity::HandoverEntity() (handover-entity.cpp:33)
+==32424==    by 0x2E8785: RrcEntity::RrcEntity() (rrc-entity.cpp:38)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 24 bytes in 1 blocks are still reachable in loss record 12 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x26F06A: UeMacEntity::UeMacEntity(NetworkNode*) (ue-mac-entity.cpp:48)
+==32424==    by 0x2CF262: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:52)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 32 bytes in 1 blocks are still reachable in loss record 13 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2E877A: RrcEntity::RrcEntity() (rrc-entity.cpp:38)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12ADFE: Gateway::Gateway() (Gateway.cpp:33)
+==32424==    by 0x325487: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 32 bytes in 1 blocks are still reachable in loss record 14 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2E877A: RrcEntity::RrcEntity() (rrc-entity.cpp:38)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 40 bytes in 1 blocks are still reachable in loss record 15 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF0F8: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12ADFE: Gateway::Gateway() (Gateway.cpp:33)
+==32424==    by 0x325487: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 40 bytes in 1 blocks are still reachable in loss record 16 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF0F8: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 40 bytes in 1 blocks are still reachable in loss record 17 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x35B103: Mobility::SetAbsolutePosition(CartesianCoordinates*) (Mobility.cpp:74)
+==32424==    by 0x12BE3F: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:96)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 40 bytes in 1 blocks are still reachable in loss record 18 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x325715: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:290)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 40 bytes in 1 blocks are still reachable in loss record 19 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x35B208: Mobility::GetWrapAroundPosition(CartesianCoordinates*) (Mobility.cpp:99)
+==32424==    by 0x3594BC: LinearMovement::UpdatePosition(double) (LinearMovement.cpp:108)
+==32424==    by 0x12C338: UserEquipment::UpdateUserPosition(double) (UserEquipment.cpp:176)
+==32424==    by 0x12D907: MakeEvent<void (UserEquipment::*)(double), UserEquipment*, double>(void (UserEquipment::*)(double), UserEquipment*, double)::EventMemberImpl1::RunEvent() (make-event.h:124)
+==32424==    by 0x318326: Simulator::ProcessOneEvent() (simulator.cpp:92)
+==32424==    by 0x318259: Simulator::Run() (simulator.cpp:77)
+==32424==    by 0x325D03: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:361)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 48 bytes in 1 blocks are still reachable in loss record 20 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12ADEC: Gateway::Gateway() (Gateway.cpp:33)
+==32424==    by 0x325487: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 48 bytes in 1 blocks are still reachable in loss record 21 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12BC27: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 22 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x20569A: NetworkManager::NetworkManager() (NetworkManager.cpp:55)
+==32424==    by 0x12D3BC: NetworkManager::Init() (NetworkManager.h:81)
+==32424==    by 0x3248DD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:98)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 23 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2056B7: NetworkManager::NetworkManager() (NetworkManager.cpp:56)
+==32424==    by 0x12D3BC: NetworkManager::Init() (NetworkManager.h:81)
+==32424==    by 0x3248DD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:98)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 24 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2056D4: NetworkManager::NetworkManager() (NetworkManager.cpp:57)
+==32424==    by 0x12D3BC: NetworkManager::Init() (NetworkManager.h:81)
+==32424==    by 0x3248DD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:98)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 25 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2056F1: NetworkManager::NetworkManager() (NetworkManager.cpp:58)
+==32424==    by 0x12D3BC: NetworkManager::Init() (NetworkManager.h:81)
+==32424==    by 0x3248DD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:98)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 26 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x20570E: NetworkManager::NetworkManager() (NetworkManager.cpp:59)
+==32424==    by 0x12D3BC: NetworkManager::Init() (NetworkManager.h:81)
+==32424==    by 0x3248DD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:98)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 27 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x20572B: NetworkManager::NetworkManager() (NetworkManager.cpp:60)
+==32424==    by 0x12D3BC: NetworkManager::Init() (NetworkManager.h:81)
+==32424==    by 0x3248DD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:98)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 28 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x205748: NetworkManager::NetworkManager() (NetworkManager.cpp:61)
+==32424==    by 0x12D3BC: NetworkManager::Init() (NetworkManager.h:81)
+==32424==    by 0x3248DD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:98)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 29 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2E86C6: RrcEntity::RrcEntity() (rrc-entity.cpp:35)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12ADFE: Gateway::Gateway() (Gateway.cpp:33)
+==32424==    by 0x325487: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 30 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2E871A: RrcEntity::RrcEntity() (rrc-entity.cpp:36)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12ADFE: Gateway::Gateway() (Gateway.cpp:33)
+==32424==    by 0x325487: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 31 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2E86C6: RrcEntity::RrcEntity() (rrc-entity.cpp:35)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 32 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2E871A: RrcEntity::RrcEntity() (rrc-entity.cpp:36)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 33 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF250: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:52)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 34 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x1BA9DD: __gnu_cxx::new_allocator<std::__debug::vector<double, std::allocator<double> > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x1BA737: std::allocator_traits<std::allocator<std::__debug::vector<double, std::allocator<double> > > >::allocate(std::allocator<std::__debug::vector<double, std::allocator<double> > >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x1BA135: std::__cxx1998::_Vector_base<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x1B90F2: std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > >::_M_default_append(unsigned long) (vector.tcc:635)
+==32424==    by 0x1B811E: std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > >::resize(unsigned long) (stl_vector.h:937)
+==32424==    by 0x1B7722: std::__debug::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > >::resize(unsigned long) (vector:357)
+==32424==    by 0x31C6E5: TransmittedSignal::TransmittedSignal() (transmitted-signal.cpp:30)
+==32424==    by 0x1C9D08: UePhy::DoSetBandwidthManager() (ue-phy.cpp:95)
+==32424==    by 0x1B1537: Phy::SetBandwidthManager(BandwidthManager*) (phy.cpp:127)
+==32424==    by 0x12BF3E: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:110)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 35 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2F102F: ChannelRealization::enableFastFading() (channel-realization.cpp:307)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x3258AC: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:307)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 36 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2FBF01: __gnu_cxx::new_allocator<std::__debug::vector<float const*, std::allocator<float const*> > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2FB552: std::allocator_traits<std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::allocate(std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x2FA803: std::__cxx1998::_Vector_base<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x2F880E: std::__cxx1998::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::_M_default_append(unsigned long) (vector.tcc:635)
+==32424==    by 0x2F741A: std::__cxx1998::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::resize(unsigned long) (stl_vector.h:937)
+==32424==    by 0x2F65A4: std::__debug::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::resize(unsigned long) (vector:357)
+==32424==    by 0x2F109D: ChannelRealization::enableFastFading() (channel-realization.cpp:308)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x3258AC: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:307)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 37 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2F10A7: ChannelRealization::enableFastFading() (channel-realization.cpp:309)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x3258AC: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:307)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 38 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2FBF01: __gnu_cxx::new_allocator<std::__debug::vector<float const*, std::allocator<float const*> > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2FB552: std::allocator_traits<std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::allocate(std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x2FA803: std::__cxx1998::_Vector_base<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x2F880E: std::__cxx1998::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::_M_default_append(unsigned long) (vector.tcc:635)
+==32424==    by 0x2F741A: std::__cxx1998::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::resize(unsigned long) (stl_vector.h:937)
+==32424==    by 0x2F65A4: std::__debug::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::resize(unsigned long) (vector:357)
+==32424==    by 0x2F110E: ChannelRealization::enableFastFading() (channel-realization.cpp:310)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x3258AC: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:307)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 39 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2F102F: ChannelRealization::enableFastFading() (channel-realization.cpp:307)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x32594F: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:309)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 40 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2FBF01: __gnu_cxx::new_allocator<std::__debug::vector<float const*, std::allocator<float const*> > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2FB552: std::allocator_traits<std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::allocate(std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x2FA803: std::__cxx1998::_Vector_base<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x2F880E: std::__cxx1998::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::_M_default_append(unsigned long) (vector.tcc:635)
+==32424==    by 0x2F741A: std::__cxx1998::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::resize(unsigned long) (stl_vector.h:937)
+==32424==    by 0x2F65A4: std::__debug::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::resize(unsigned long) (vector:357)
+==32424==    by 0x2F109D: ChannelRealization::enableFastFading() (channel-realization.cpp:308)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x32594F: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:309)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 41 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2F10A7: ChannelRealization::enableFastFading() (channel-realization.cpp:309)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x32594F: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:309)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 1 blocks are still reachable in loss record 42 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2FBF01: __gnu_cxx::new_allocator<std::__debug::vector<float const*, std::allocator<float const*> > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2FB552: std::allocator_traits<std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::allocate(std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x2FA803: std::__cxx1998::_Vector_base<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x2F880E: std::__cxx1998::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::_M_default_append(unsigned long) (vector.tcc:635)
+==32424==    by 0x2F741A: std::__cxx1998::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::resize(unsigned long) (stl_vector.h:937)
+==32424==    by 0x2F65A4: std::__debug::vector<std::__debug::vector<float const*, std::allocator<float const*> >, std::allocator<std::__debug::vector<float const*, std::allocator<float const*> > > >::resize(unsigned long) (vector:357)
+==32424==    by 0x2F110E: ChannelRealization::enableFastFading() (channel-realization.cpp:310)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x32594F: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:309)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 7 blocks are still reachable in loss record 43 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF12C: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:31)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 56 bytes in 7 blocks are still reachable in loss record 44 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x30C0B5: __gnu_cxx::new_allocator<NetworkNode*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x30BCDF: std::allocator_traits<std::allocator<NetworkNode*> >::allocate(std::allocator<NetworkNode*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x30B79F: std::__cxx1998::_Vector_base<NetworkNode*, std::allocator<NetworkNode*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x30AC30: void std::__cxx1998::vector<NetworkNode*, std::allocator<NetworkNode*> >::_M_realloc_insert<NetworkNode* const&>(__gnu_cxx::__normal_iterator<NetworkNode**, std::__cxx1998::vector<NetworkNode*, std::allocator<NetworkNode*> > >, NetworkNode* const&) (vector.tcc:440)
+==32424==    by 0x309E6F: std::__cxx1998::vector<NetworkNode*, std::allocator<NetworkNode*> >::insert(__gnu_cxx::__normal_iterator<NetworkNode* const*, std::__cxx1998::vector<NetworkNode*, std::allocator<NetworkNode*> > >, NetworkNode* const&) (vector.tcc:161)
+==32424==    by 0x3090E2: std::__debug::vector<NetworkNode*, std::allocator<NetworkNode*> >::insert(__gnu_debug::_Safe_iterator<__gnu_cxx::__normal_iterator<NetworkNode* const*, std::__cxx1998::vector<NetworkNode*, std::allocator<NetworkNode*> > >, std::__debug::vector<NetworkNode*, std::allocator<NetworkNode*> >, std::random_access_iterator_tag>, NetworkNode* const&) (vector:546)
+==32424==    by 0x30744F: RadioChannel::AddDevice(NetworkNode*) (RadioChannel.cpp:152)
+==32424==    by 0x325294: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:230)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 64 bytes in 1 blocks are still reachable in loss record 45 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x214B7D: __gnu_cxx::new_allocator<Cell*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x214379: std::allocator_traits<std::allocator<Cell*> >::allocate(std::allocator<Cell*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x212F01: std::__cxx1998::_Vector_base<Cell*, std::allocator<Cell*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x21050E: void std::__cxx1998::vector<Cell*, std::allocator<Cell*> >::_M_realloc_insert<Cell* const&>(__gnu_cxx::__normal_iterator<Cell**, std::__cxx1998::vector<Cell*, std::allocator<Cell*> > >, Cell* const&) (vector.tcc:440)
+==32424==    by 0x20DF0F: std::__cxx1998::vector<Cell*, std::allocator<Cell*> >::push_back(Cell* const&) (stl_vector.h:1195)
+==32424==    by 0x20C22D: std::__debug::vector<Cell*, std::allocator<Cell*> >::push_back(Cell* const&) (vector:477)
+==32424==    by 0x324CDA: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:180)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 64 bytes in 1 blocks are still reachable in loss record 46 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x14CCA9: __gnu_cxx::new_allocator<GNodeB*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x14B587: std::allocator_traits<std::allocator<GNodeB*> >::allocate(std::allocator<GNodeB*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x1489A5: std::__cxx1998::_Vector_base<GNodeB*, std::allocator<GNodeB*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x1474FA: void std::__cxx1998::vector<GNodeB*, std::allocator<GNodeB*> >::_M_realloc_insert<GNodeB* const&>(__gnu_cxx::__normal_iterator<GNodeB**, std::__cxx1998::vector<GNodeB*, std::allocator<GNodeB*> > >, GNodeB* const&) (vector.tcc:440)
+==32424==    by 0x144EF9: std::__cxx1998::vector<GNodeB*, std::allocator<GNodeB*> >::push_back(GNodeB* const&) (stl_vector.h:1195)
+==32424==    by 0x14348F: std::__debug::vector<GNodeB*, std::allocator<GNodeB*> >::push_back(GNodeB* const&) (vector:477)
+==32424==    by 0x3252B8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:233)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 64 bytes in 1 blocks are still reachable in loss record 47 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x1883BB: __gnu_cxx::new_allocator<std::pair<double, double> >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x18805E: std::allocator_traits<std::allocator<std::pair<double, double> > >::allocate(std::allocator<std::pair<double, double> >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x187CF5: std::__cxx1998::_Vector_base<std::pair<double, double>, std::allocator<std::pair<double, double> > >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x187739: std::pair<double, double>* std::__cxx1998::vector<std::pair<double, double>, std::allocator<std::pair<double, double> > >::_M_allocate_and_copy<std::pair<double, double> const*>(unsigned long, std::pair<double, double> const*, std::pair<double, double> const*) (stl_vector.h:1508)
+==32424==    by 0x186FD6: void std::__cxx1998::vector<std::pair<double, double>, std::allocator<std::pair<double, double> > >::_M_assign_aux<std::pair<double, double> const*>(std::pair<double, double> const*, std::pair<double, double> const*, std::forward_iterator_tag) (vector.tcc:309)
+==32424==    by 0x1869DD: std::__cxx1998::vector<std::pair<double, double>, std::allocator<std::pair<double, double> > >::operator=(std::initializer_list<std::pair<double, double> >) (stl_vector.h:729)
+==32424==    by 0x186500: std::__debug::vector<std::pair<double, double>, std::allocator<std::pair<double, double> > >::operator=(std::initializer_list<std::pair<double, double> >) (vector:246)
+==32424==    by 0x1841AC: Interference::Interference() (interference.cpp:47)
+==32424==    by 0x1C997E: UePhy::UePhy() (ue-phy.cpp:73)
+==32424==    by 0x12BF01: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:108)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424== 
+==32424== 64 bytes in 1 blocks are still reachable in loss record 48 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x1883BB: __gnu_cxx::new_allocator<std::pair<double, double> >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x18805E: std::allocator_traits<std::allocator<std::pair<double, double> > >::allocate(std::allocator<std::pair<double, double> >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x187CF5: std::__cxx1998::_Vector_base<std::pair<double, double>, std::allocator<std::pair<double, double> > >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x187739: std::pair<double, double>* std::__cxx1998::vector<std::pair<double, double>, std::allocator<std::pair<double, double> > >::_M_allocate_and_copy<std::pair<double, double> const*>(unsigned long, std::pair<double, double> const*, std::pair<double, double> const*) (stl_vector.h:1508)
+==32424==    by 0x186FD6: void std::__cxx1998::vector<std::pair<double, double>, std::allocator<std::pair<double, double> > >::_M_assign_aux<std::pair<double, double> const*>(std::pair<double, double> const*, std::pair<double, double> const*, std::forward_iterator_tag) (vector.tcc:309)
+==32424==    by 0x1869DD: std::__cxx1998::vector<std::pair<double, double>, std::allocator<std::pair<double, double> > >::operator=(std::initializer_list<std::pair<double, double> >) (stl_vector.h:729)
+==32424==    by 0x186500: std::__debug::vector<std::pair<double, double>, std::allocator<std::pair<double, double> > >::operator=(std::initializer_list<std::pair<double, double> >) (vector:246)
+==32424==    by 0x184243: Interference::Interference() (interference.cpp:54)
+==32424==    by 0x1C997E: UePhy::UePhy() (ue-phy.cpp:73)
+==32424==    by 0x12BF01: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:108)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424== 
+==32424== 64 bytes in 1 blocks are indirectly lost in loss record 49 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x356701: __gnu_cxx::new_allocator<RadioChannel*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x3560F5: std::allocator_traits<std::allocator<RadioChannel*> >::allocate(std::allocator<RadioChannel*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x355043: std::__cxx1998::_Vector_base<RadioChannel*, std::allocator<RadioChannel*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x353A44: void std::__cxx1998::vector<RadioChannel*, std::allocator<RadioChannel*> >::_M_realloc_insert<RadioChannel* const&>(__gnu_cxx::__normal_iterator<RadioChannel**, std::__cxx1998::vector<RadioChannel*, std::allocator<RadioChannel*> > >, RadioChannel* const&) (vector.tcc:440)
+==32424==    by 0x35255B: std::__cxx1998::vector<RadioChannel*, std::allocator<RadioChannel*> >::push_back(RadioChannel* const&) (stl_vector.h:1195)
+==32424==    by 0x35155B: std::__debug::vector<RadioChannel*, std::allocator<RadioChannel*> >::push_back(RadioChannel* const&) (vector:477)
+==32424==    by 0x324E96: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:197)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 64 bytes in 1 blocks are indirectly lost in loss record 50 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x356701: __gnu_cxx::new_allocator<RadioChannel*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x3560F5: std::allocator_traits<std::allocator<RadioChannel*> >::allocate(std::allocator<RadioChannel*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x355043: std::__cxx1998::_Vector_base<RadioChannel*, std::allocator<RadioChannel*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x353A44: void std::__cxx1998::vector<RadioChannel*, std::allocator<RadioChannel*> >::_M_realloc_insert<RadioChannel* const&>(__gnu_cxx::__normal_iterator<RadioChannel**, std::__cxx1998::vector<RadioChannel*, std::allocator<RadioChannel*> > >, RadioChannel* const&) (vector.tcc:440)
+==32424==    by 0x35255B: std::__cxx1998::vector<RadioChannel*, std::allocator<RadioChannel*> >::push_back(RadioChannel* const&) (stl_vector.h:1195)
+==32424==    by 0x35155B: std::__debug::vector<RadioChannel*, std::allocator<RadioChannel*> >::push_back(RadioChannel* const&) (vector:477)
+==32424==    by 0x324EE2: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:201)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 72 bytes in 1 blocks are still reachable in loss record 51 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x32547C: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 72 bytes in 1 blocks are still reachable in loss record 52 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x1B1220: Phy::Phy() (phy.cpp:42)
+==32424==    by 0x1C979F: UePhy::UePhy() (ue-phy.cpp:58)
+==32424==    by 0x12BF01: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:108)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 80 bytes in 1 blocks are still reachable in loss record 53 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x26F15E: UeMacEntity::UeMacEntity(NetworkNode*) (ue-mac-entity.cpp:58)
+==32424==    by 0x2CF262: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:52)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 80 bytes in 1 blocks are still reachable in loss record 54 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12BD73: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:83)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 88 bytes in 1 blocks are still reachable in loss record 55 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12D3B1: NetworkManager::Init() (NetworkManager.h:81)
+==32424==    by 0x3248DD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:98)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 112 bytes in 7 blocks are still reachable in loss record 56 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF150: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:33)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 112 bytes in 7 blocks are still reachable in loss record 57 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12E96D: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:95)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 120 bytes in 1 blocks are still reachable in loss record 58 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF282: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:60)
+==32424==    by 0x12ADFE: Gateway::Gateway() (Gateway.cpp:33)
+==32424==    by 0x325487: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:252)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 120 bytes in 1 blocks are still reachable in loss record 59 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF282: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:60)
+==32424==    by 0x12BC39: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:51)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 120 (56 direct, 64 indirect) bytes in 1 blocks are definitely lost in loss record 60 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x324E00: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:191)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 120 (56 direct, 64 indirect) bytes in 1 blocks are definitely lost in loss record 61 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x324E1C: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:192)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 128 bytes in 1 blocks are still reachable in loss record 62 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x1C9973: UePhy::UePhy() (ue-phy.cpp:73)
+==32424==    by 0x12BF01: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:108)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 128 bytes in 1 blocks are still reachable in loss record 63 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x1C9CFD: UePhy::DoSetBandwidthManager() (ue-phy.cpp:95)
+==32424==    by 0x1B1537: Phy::SetBandwidthManager(BandwidthManager*) (phy.cpp:127)
+==32424==    by 0x12BF3E: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:110)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 128 bytes in 1 blocks are still reachable in loss record 64 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x13DEDB: __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x13BE3C: std::allocator_traits<std::allocator<int> >::allocate(std::allocator<int>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x13919B: std::__cxx1998::_Vector_base<int, std::allocator<int> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x13B812: void std::__cxx1998::vector<int, std::allocator<int> >::_M_realloc_insert<int>(__gnu_cxx::__normal_iterator<int*, std::__cxx1998::vector<int, std::allocator<int> > >, int&&) (vector.tcc:440)
+==32424==    by 0x13904D: void std::__cxx1998::vector<int, std::allocator<int> >::emplace_back<int>(int&&) (vector.tcc:121)
+==32424==    by 0x135A23: void std::__debug::vector<int, std::allocator<int> >::emplace_back<int>(int&&) (vector:499)
+==32424==    by 0x133177: __gnu_cxx::__enable_if<!std::__are_same<int, bool>::__value, void>::__type std::__debug::vector<int, std::allocator<int> >::push_back<int>(int&&) (vector:488)
+==32424==    by 0x12F668: GNodeB::UserEquipmentRecord::UserEquipmentRecord(UserEquipment*) (GNodeB.cpp:246)
+==32424==    by 0x12EB1B: GNodeB::RegisterUserEquipment(UserEquipment*) (GNodeB.cpp:110)
+==32424==    by 0x325842: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:302)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 136 bytes in 1 blocks are still reachable in loss record 65 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x325621: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 168 bytes in 7 blocks are still reachable in loss record 66 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2EA09E: HandoverEntity::HandoverEntity() (handover-entity.cpp:33)
+==32424==    by 0x2E8785: RrcEntity::RrcEntity() (rrc-entity.cpp:38)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 168 bytes in 7 blocks are still reachable in loss record 67 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x271BF0: GnbMacEntity::GnbMacEntity() (gnb-mac-entity.cpp:45)
+==32424==    by 0x2CF1A4: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:38)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 168 bytes in 7 blocks are still reachable in loss record 68 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x231633: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*>(MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*) (shared_ptr_base.h:625)
+==32424==    by 0x22FE58: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*>(MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*, std::integral_constant<bool, false>) (shared_ptr_base.h:636)
+==32424==    by 0x22D0A6: std::__shared_ptr<Event, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0, void>(MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*) (shared_ptr_base.h:1125)
+==32424==    by 0x229F38: std::shared_ptr<Event>::shared_ptr<MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0, void>(MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*) (shared_ptr.h:139)
+==32424==    by 0x2279D5: std::shared_ptr<Event> MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*) (make-event.h:101)
+==32424==    by 0x225AF4: std::shared_ptr<Event> Simulator::Schedule<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(double, void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*) (simulator.h:124)
+==32424==    by 0x224160: GnbBaselineRandomAccess::CheckCollisions() (gnb-baseline-random-access.cpp:267)
+==32424==    by 0x22795D: MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0::RunEvent() (make-event.h:95)
+==32424==    by 0x318326: Simulator::ProcessOneEvent() (simulator.cpp:92)
+==32424==    by 0x318259: Simulator::Run() (simulator.cpp:77)
+==32424==    by 0x325D03: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:361)
+==32424== 
+==32424== 168 bytes in 7 blocks are still reachable in loss record 69 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x231633: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*>(MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*) (shared_ptr_base.h:625)
+==32424==    by 0x22FE58: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*>(MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*, std::integral_constant<bool, false>) (shared_ptr_base.h:636)
+==32424==    by 0x22D0A6: std::__shared_ptr<Event, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0, void>(MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*) (shared_ptr_base.h:1125)
+==32424==    by 0x229F38: std::shared_ptr<Event>::shared_ptr<MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0, void>(MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0*) (shared_ptr.h:139)
+==32424==    by 0x2279D5: std::shared_ptr<Event> MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*) (make-event.h:101)
+==32424==    by 0x225AF4: std::shared_ptr<Event> Simulator::Schedule<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(double, void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*) (simulator.h:124)
+==32424==    by 0x222F3E: GnbBaselineRandomAccess::SetRachReservedSubChannels() (gnb-baseline-random-access.cpp:93)
+==32424==    by 0x22795D: MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0::RunEvent() (make-event.h:95)
+==32424==    by 0x318326: Simulator::ProcessOneEvent() (simulator.cpp:92)
+==32424==    by 0x318259: Simulator::Run() (simulator.cpp:77)
+==32424==    by 0x325D03: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:361)
+==32424== 
+==32424== 224 bytes in 7 blocks are still reachable in loss record 70 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x324E54: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:195)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 224 bytes in 7 blocks are still reachable in loss record 71 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x324EA0: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:199)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 224 bytes in 7 blocks are still reachable in loss record 72 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2E877A: RrcEntity::RrcEntity() (rrc-entity.cpp:38)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 224 bytes in 7 blocks are still reachable in loss record 73 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12FC7C: GNodeB::SetDLScheduler(GNodeB::DLSchedulerType) (GNodeB.cpp:422)
+==32424==    by 0x3250AD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:216)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 256 bytes in 1 blocks are still reachable in loss record 74 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x13ED6D: __gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x13CE9C: std::allocator_traits<std::allocator<double> >::allocate(std::allocator<double>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x13A5A7: std::__cxx1998::_Vector_base<double, std::allocator<double> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x13BBAE: void std::__cxx1998::vector<double, std::allocator<double> >::_M_realloc_insert<double>(__gnu_cxx::__normal_iterator<double*, std::__cxx1998::vector<double, std::allocator<double> > >, double&&) (vector.tcc:440)
+==32424==    by 0x13912F: void std::__cxx1998::vector<double, std::allocator<double> >::emplace_back<double>(double&&) (vector.tcc:121)
+==32424==    by 0x135ABD: void std::__debug::vector<double, std::allocator<double> >::emplace_back<double>(double&&) (vector:499)
+==32424==    by 0x1331AD: __gnu_cxx::__enable_if<!std::__are_same<double, bool>::__value, void>::__type std::__debug::vector<double, std::allocator<double> >::push_back<double>(double&&) (vector:488)
+==32424==    by 0x12F700: GNodeB::UserEquipmentRecord::UserEquipmentRecord(UserEquipment*) (GNodeB.cpp:253)
+==32424==    by 0x12EB1B: GNodeB::RegisterUserEquipment(UserEquipment*) (GNodeB.cpp:110)
+==32424==    by 0x325842: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:302)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 256 bytes in 1 blocks are still reachable in loss record 75 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2FBB97: __gnu_cxx::new_allocator<float const*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2FB257: std::allocator_traits<std::allocator<float const*> >::allocate(std::allocator<float const*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x2FA52B: std::__cxx1998::_Vector_base<float const*, std::allocator<float const*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x2FA080: void std::__cxx1998::vector<float const*, std::allocator<float const*> >::_M_realloc_insert<float const* const&>(__gnu_cxx::__normal_iterator<float const**, std::__cxx1998::vector<float const*, std::allocator<float const*> > >, float const* const&) (vector.tcc:440)
+==32424==    by 0x2F7CFF: std::__cxx1998::vector<float const*, std::allocator<float const*> >::push_back(float const* const&) (stl_vector.h:1195)
+==32424==    by 0x2F6AB7: std::__debug::vector<float const*, std::allocator<float const*> >::push_back(float const* const&) (vector:477)
+==32424==    by 0x2F5244: ChannelRealization::UpdateFastFading() (channel-realization.cpp:1283)
+==32424==    by 0x2F111A: ChannelRealization::enableFastFading() (channel-realization.cpp:312)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x3258AC: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:307)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 256 bytes in 1 blocks are still reachable in loss record 76 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2FBB97: __gnu_cxx::new_allocator<float const*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2FB257: std::allocator_traits<std::allocator<float const*> >::allocate(std::allocator<float const*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x2FA52B: std::__cxx1998::_Vector_base<float const*, std::allocator<float const*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x2FA080: void std::__cxx1998::vector<float const*, std::allocator<float const*> >::_M_realloc_insert<float const* const&>(__gnu_cxx::__normal_iterator<float const**, std::__cxx1998::vector<float const*, std::allocator<float const*> > >, float const* const&) (vector.tcc:440)
+==32424==    by 0x2F7CFF: std::__cxx1998::vector<float const*, std::allocator<float const*> >::push_back(float const* const&) (stl_vector.h:1195)
+==32424==    by 0x2F6AB7: std::__debug::vector<float const*, std::allocator<float const*> >::push_back(float const* const&) (vector:477)
+==32424==    by 0x2F5278: ChannelRealization::UpdateFastFading() (channel-realization.cpp:1284)
+==32424==    by 0x2F111A: ChannelRealization::enableFastFading() (channel-realization.cpp:312)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x3258AC: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:307)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 256 bytes in 1 blocks are still reachable in loss record 77 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2FBB97: __gnu_cxx::new_allocator<float const*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2FB257: std::allocator_traits<std::allocator<float const*> >::allocate(std::allocator<float const*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x2FA52B: std::__cxx1998::_Vector_base<float const*, std::allocator<float const*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x2FA080: void std::__cxx1998::vector<float const*, std::allocator<float const*> >::_M_realloc_insert<float const* const&>(__gnu_cxx::__normal_iterator<float const**, std::__cxx1998::vector<float const*, std::allocator<float const*> > >, float const* const&) (vector.tcc:440)
+==32424==    by 0x2F7CFF: std::__cxx1998::vector<float const*, std::allocator<float const*> >::push_back(float const* const&) (stl_vector.h:1195)
+==32424==    by 0x2F6AB7: std::__debug::vector<float const*, std::allocator<float const*> >::push_back(float const* const&) (vector:477)
+==32424==    by 0x2F5244: ChannelRealization::UpdateFastFading() (channel-realization.cpp:1283)
+==32424==    by 0x2F111A: ChannelRealization::enableFastFading() (channel-realization.cpp:312)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x32594F: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:309)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 256 bytes in 1 blocks are still reachable in loss record 78 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2FBB97: __gnu_cxx::new_allocator<float const*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2FB257: std::allocator_traits<std::allocator<float const*> >::allocate(std::allocator<float const*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x2FA52B: std::__cxx1998::_Vector_base<float const*, std::allocator<float const*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x2FA080: void std::__cxx1998::vector<float const*, std::allocator<float const*> >::_M_realloc_insert<float const* const&>(__gnu_cxx::__normal_iterator<float const**, std::__cxx1998::vector<float const*, std::allocator<float const*> > >, float const* const&) (vector.tcc:440)
+==32424==    by 0x2F7CFF: std::__cxx1998::vector<float const*, std::allocator<float const*> >::push_back(float const* const&) (stl_vector.h:1195)
+==32424==    by 0x2F6AB7: std::__debug::vector<float const*, std::allocator<float const*> >::push_back(float const* const&) (vector:477)
+==32424==    by 0x2F5278: ChannelRealization::UpdateFastFading() (channel-realization.cpp:1284)
+==32424==    by 0x2F111A: ChannelRealization::enableFastFading() (channel-realization.cpp:312)
+==32424==    by 0x2F0C95: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:208)
+==32424==    by 0x32594F: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:309)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 280 bytes in 7 blocks are still reachable in loss record 79 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x324C5B: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:178)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 280 bytes in 7 blocks are still reachable in loss record 80 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12495F: Cell::Cell(int, double, double, double, double) (Cell.cpp:34)
+==32424==    by 0x324C96: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:178)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 280 bytes in 7 blocks are still reachable in loss record 81 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x35B103: Mobility::SetAbsolutePosition(CartesianCoordinates*) (Mobility.cpp:74)
+==32424==    by 0x12E8A9: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:82)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 280 bytes in 7 blocks are still reachable in loss record 82 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF0F8: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 280 bytes in 7 blocks are still reachable in loss record 83 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x35B208: Mobility::GetWrapAroundPosition(CartesianCoordinates*) (Mobility.cpp:99)
+==32424==    by 0x2F07DB: ChannelRealization::ChannelRealization(NetworkNode*, NetworkNode*, ChannelRealization::ChannelModel, bool) (channel-realization.cpp:134)
+==32424==    by 0x3258AC: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:307)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 288 bytes in 1 blocks are still reachable in loss record 84 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12EB06: GNodeB::RegisterUserEquipment(UserEquipment*) (GNodeB.cpp:110)
+==32424==    by 0x325842: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:302)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 336 bytes in 7 blocks are still reachable in loss record 85 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12E93A: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 336 bytes in 7 blocks are still reachable in loss record 86 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2279A1: std::shared_ptr<Event> MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*) (make-event.h:100)
+==32424==    by 0x225AF4: std::shared_ptr<Event> Simulator::Schedule<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(double, void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*) (simulator.h:124)
+==32424==    by 0x224160: GnbBaselineRandomAccess::CheckCollisions() (gnb-baseline-random-access.cpp:267)
+==32424==    by 0x22795D: MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0::RunEvent() (make-event.h:95)
+==32424==    by 0x318326: Simulator::ProcessOneEvent() (simulator.cpp:92)
+==32424==    by 0x318259: Simulator::Run() (simulator.cpp:77)
+==32424==    by 0x325D03: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:361)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 336 bytes in 7 blocks are still reachable in loss record 87 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2279A1: std::shared_ptr<Event> MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*) (make-event.h:100)
+==32424==    by 0x225AF4: std::shared_ptr<Event> Simulator::Schedule<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(double, void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*) (simulator.h:124)
+==32424==    by 0x222F3E: GnbBaselineRandomAccess::SetRachReservedSubChannels() (gnb-baseline-random-access.cpp:93)
+==32424==    by 0x22795D: MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0::RunEvent() (make-event.h:95)
+==32424==    by 0x318326: Simulator::ProcessOneEvent() (simulator.cpp:92)
+==32424==    by 0x318259: Simulator::Run() (simulator.cpp:77)
+==32424==    by 0x325D03: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:361)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 392 bytes in 7 blocks are still reachable in loss record 88 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x306B1A: RadioChannel::RadioChannel() (RadioChannel.cpp:38)
+==32424==    by 0x324E5F: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:195)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 392 bytes in 7 blocks are still reachable in loss record 89 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x306B1A: RadioChannel::RadioChannel() (RadioChannel.cpp:38)
+==32424==    by 0x324EAB: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:199)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 392 bytes in 7 blocks are still reachable in loss record 90 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12E8DE: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:86)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 392 bytes in 7 blocks are still reachable in loss record 91 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2E86C6: RrcEntity::RrcEntity() (rrc-entity.cpp:35)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 392 bytes in 7 blocks are still reachable in loss record 92 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2E871A: RrcEntity::RrcEntity() (rrc-entity.cpp:36)
+==32424==    by 0x2CF103: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:28)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 392 bytes in 7 blocks are still reachable in loss record 93 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2C1C14: PacketScheduler::CreateFlowsToSchedule() (packet-scheduler.cpp:121)
+==32424==    by 0x2AF515: DL_PF_PacketScheduler::DL_PF_PacketScheduler() (dl-pf-packet-scheduler.cpp:39)
+==32424==    by 0x12FC87: GNodeB::SetDLScheduler(GNodeB::DLSchedulerType) (GNodeB.cpp:422)
+==32424==    by 0x3250AD: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:216)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 392 bytes in 7 blocks are still reachable in loss record 94 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x1BA9DD: __gnu_cxx::new_allocator<std::__debug::vector<double, std::allocator<double> > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x1BA737: std::allocator_traits<std::allocator<std::__debug::vector<double, std::allocator<double> > > >::allocate(std::allocator<std::__debug::vector<double, std::allocator<double> > >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x1BA135: std::__cxx1998::_Vector_base<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x1B90F2: std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > >::_M_default_append(unsigned long) (vector.tcc:635)
+==32424==    by 0x1B811E: std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > >::resize(unsigned long) (stl_vector.h:937)
+==32424==    by 0x1B7722: std::__debug::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > >::resize(unsigned long) (vector:357)
+==32424==    by 0x31C6E5: TransmittedSignal::TransmittedSignal() (transmitted-signal.cpp:30)
+==32424==    by 0x1B5571: GnbPhy::DoSetBandwidthManager() (gnb-phy.cpp:72)
+==32424==    by 0x1B1537: Phy::SetBandwidthManager(BandwidthManager*) (phy.cpp:127)
+==32424==    by 0x3250E8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:218)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 392 bytes in 7 blocks are still reachable in loss record 95 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x306559: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x306312: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x305C3C: std::_Rb_tree<std::pair<NetworkNode*, NetworkNode*>, std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*>, std::_Select1st<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::_M_get_node() (stl_tree.h:580)
+==32424==    by 0x304ABD: std::_Rb_tree_node<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >* std::_Rb_tree<std::pair<NetworkNode*, NetworkNode*>, std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*>, std::_Select1st<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::_M_create_node<std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*> >(std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>&&) (stl_tree.h:630)
+==32424==    by 0x303631: std::pair<std::_Rb_tree_iterator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, bool> std::_Rb_tree<std::pair<NetworkNode*, NetworkNode*>, std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*>, std::_Select1st<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::_M_emplace_unique<std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*> >(std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>&&) (stl_tree.h:2413)
+==32424==    by 0x302125: std::enable_if<std::is_constructible<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*>, std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*> >::value, std::pair<std::_Rb_tree_iterator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, bool> >::type std::__cxx1998::map<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::insert<std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*> >(std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>&&) (stl_map.h:815)
+==32424==    by 0x300CF2: std::pair<__gnu_debug::_Safe_iterator<std::_Rb_tree_iterator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, std::__debug::map<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >, std::bidirectional_iterator_tag>, bool> std::__debug::map<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::insert<std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>, void>(std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>&&) (map.h:283)
+==32424==    by 0x2FEE39: PropagationLossModel::AddChannelRealization(ChannelRealization*) (propagation-loss-model.cpp:44)
+==32424==    by 0x325901: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:308)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 392 bytes in 7 blocks are still reachable in loss record 96 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x306559: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x306312: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x305C3C: std::_Rb_tree<std::pair<NetworkNode*, NetworkNode*>, std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*>, std::_Select1st<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::_M_get_node() (stl_tree.h:580)
+==32424==    by 0x304ABD: std::_Rb_tree_node<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >* std::_Rb_tree<std::pair<NetworkNode*, NetworkNode*>, std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*>, std::_Select1st<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::_M_create_node<std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*> >(std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>&&) (stl_tree.h:630)
+==32424==    by 0x303631: std::pair<std::_Rb_tree_iterator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, bool> std::_Rb_tree<std::pair<NetworkNode*, NetworkNode*>, std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*>, std::_Select1st<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::_M_emplace_unique<std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*> >(std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>&&) (stl_tree.h:2413)
+==32424==    by 0x302125: std::enable_if<std::is_constructible<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*>, std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*> >::value, std::pair<std::_Rb_tree_iterator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, bool> >::type std::__cxx1998::map<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::insert<std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*> >(std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>&&) (stl_map.h:815)
+==32424==    by 0x300CF2: std::pair<__gnu_debug::_Safe_iterator<std::_Rb_tree_iterator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> >, std::__debug::map<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >, std::bidirectional_iterator_tag>, bool> std::__debug::map<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*, std::less<std::pair<NetworkNode*, NetworkNode*> >, std::allocator<std::pair<std::pair<NetworkNode*, NetworkNode*> const, ChannelRealization*> > >::insert<std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>, void>(std::pair<std::pair<NetworkNode*, NetworkNode*>, ChannelRealization*>&&) (map.h:283)
+==32424==    by 0x2FEE39: PropagationLossModel::AddChannelRealization(ChannelRealization*) (propagation-loss-model.cpp:44)
+==32424==    by 0x3259A4: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:310)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 448 bytes in 7 blocks are still reachable in loss record 97 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2323B9: __gnu_cxx::new_allocator<GnbBaselineRandomAccess::rarElement*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2315BA: std::allocator_traits<std::allocator<GnbBaselineRandomAccess::rarElement*> >::allocate(std::allocator<GnbBaselineRandomAccess::rarElement*>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x22FC55: std::__cxx1998::_Deque_base<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::_M_allocate_map(unsigned long) (stl_deque.h:634)
+==32424==    by 0x22CE3B: std::__cxx1998::_Deque_base<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::_M_initialize_map(unsigned long) (stl_deque.h:707)
+==32424==    by 0x229DF9: std::__cxx1998::_Deque_base<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::_Deque_base() (stl_deque.h:510)
+==32424==    by 0x22769F: std::__cxx1998::deque<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::deque() (stl_deque.h:915)
+==32424==    by 0x2259B2: std::__debug::deque<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::deque() (deque:97)
+==32424==    by 0x225A0F: std::queue<GnbBaselineRandomAccess::rarElement, std::__debug::deque<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> > >::queue<std::__debug::deque<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >, void>() (stl_queue.h:161)
+==32424==    by 0x222A4B: GnbBaselineRandomAccess::GnbBaselineRandomAccess() (gnb-baseline-random-access.cpp:35)
+==32424==    by 0x222C97: GnbBaselineRandomAccess::GnbBaselineRandomAccess(MacEntity*) (gnb-baseline-random-access.cpp:52)
+==32424==    by 0x271C5B: GnbMacEntity::GnbMacEntity() (gnb-mac-entity.cpp:50)
+==32424== 
+==32424== 504 bytes in 7 blocks are still reachable in loss record 98 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x1B1220: Phy::Phy() (phy.cpp:42)
+==32424==    by 0x1B5368: GnbPhy::GnbPhy() (gnb-phy.cpp:44)
+==32424==    by 0x12E906: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:88)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 504 bytes in 7 blocks are still reachable in loss record 99 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF199: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:38)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 560 bytes in 7 blocks are still reachable in loss record 100 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x306B6E: RadioChannel::RadioChannel() (RadioChannel.cpp:39)
+==32424==    by 0x324E5F: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:195)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 560 bytes in 7 blocks are still reachable in loss record 101 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x306B6E: RadioChannel::RadioChannel() (RadioChannel.cpp:39)
+==32424==    by 0x324EAB: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:199)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 560 bytes in 7 blocks are still reachable in loss record 102 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x324FD2: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 560 bytes in 7 blocks are still reachable in loss record 103 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12E887: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:81)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 672 bytes in 21 blocks are still reachable in loss record 104 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x13DEDB: __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x13BE3C: std::allocator_traits<std::allocator<int> >::allocate(std::allocator<int>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x13919B: std::__cxx1998::_Vector_base<int, std::allocator<int> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x18D358: void std::__cxx1998::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::__cxx1998::vector<int, std::allocator<int> > >, int const&) (vector.tcc:440)
+==32424==    by 0x18B989: std::__cxx1998::vector<int, std::allocator<int> >::push_back(int const&) (stl_vector.h:1195)
+==32424==    by 0x18AE5B: std::__debug::vector<int, std::allocator<int> >::push_back(int const&) (vector:477)
+==32424==    by 0x256281: AllocationMap::addElement(int, int) (allocation-map.cpp:44)
+==32424==    by 0x222ECE: GnbBaselineRandomAccess::SetRachReservedSubChannels() (gnb-baseline-random-access.cpp:85)
+==32424==    by 0x22795D: MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0::RunEvent() (make-event.h:95)
+==32424==    by 0x318326: Simulator::ProcessOneEvent() (simulator.cpp:92)
+==32424==    by 0x318259: Simulator::Run() (simulator.cpp:77)
+==32424== 
+==32424== 840 bytes in 1 blocks are still reachable in loss record 105 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12BEF6: UserEquipment::UserEquipment(int, double, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:108)
+==32424==    by 0x12C153: UserEquipment::UserEquipment(int, double, double, int, double, Cell*, GNodeB*, bool, Mobility::MobilityModel) (UserEquipment.cpp:135)
+==32424==    by 0x325670: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:280)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 840 bytes in 7 blocks are still reachable in loss record 106 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x2CF282: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:60)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 896 bytes in 7 blocks are still reachable in loss record 107 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x1B5566: GnbPhy::DoSetBandwidthManager() (gnb-phy.cpp:72)
+==32424==    by 0x1B1537: Phy::SetBandwidthManager(BandwidthManager*) (phy.cpp:127)
+==32424==    by 0x3250E8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:218)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 952 bytes in 7 blocks are still reachable in loss record 108 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x12E8FB: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:88)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 1,064 bytes in 7 blocks are still reachable in loss record 109 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x325889: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:307)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 1,064 bytes in 7 blocks are still reachable in loss record 110 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x32592C: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:309)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 1,600 bytes in 8 blocks are still reachable in loss record 111 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x13ED6D: __gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x13CE9C: std::allocator_traits<std::allocator<double> >::allocate(std::allocator<double>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x13A5A7: std::__cxx1998::_Vector_base<double, std::allocator<double> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x1371AF: double* std::__cxx1998::vector<double, std::allocator<double> >::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<double const*, std::__cxx1998::vector<double, std::allocator<double> > > >(unsigned long, __gnu_cxx::__normal_iterator<double const*, std::__cxx1998::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double const*, std::__cxx1998::vector<double, std::allocator<double> > >) (stl_vector.h:1508)
+==32424==    by 0x13421F: std::__cxx1998::vector<double, std::allocator<double> >::operator=(std::__cxx1998::vector<double, std::allocator<double> > const&) (vector.tcc:226)
+==32424==    by 0x131C19: std::__debug::vector<double, std::allocator<double> >::operator=(std::__debug::vector<double, std::allocator<double> > const&) (vector:118)
+==32424==    by 0x3060A6: std::__debug::vector<double, std::allocator<double> >* std::__copy_move<false, false, std::random_access_iterator_tag>::__copy_m<std::__debug::vector<double, std::allocator<double> > const*, std::__debug::vector<double, std::allocator<double> >*>(std::__debug::vector<double, std::allocator<double> > const*, std::__debug::vector<double, std::allocator<double> > const*, std::__debug::vector<double, std::allocator<double> >*) (stl_algobase.h:342)
+==32424==    by 0x305877: std::__debug::vector<double, std::allocator<double> >* std::__copy_move_a<false, std::__debug::vector<double, std::allocator<double> > const*, std::__debug::vector<double, std::allocator<double> >*>(std::__debug::vector<double, std::allocator<double> > const*, std::__debug::vector<double, std::allocator<double> > const*, std::__debug::vector<double, std::allocator<double> >*) (stl_algobase.h:404)
+==32424==    by 0x3047B6: __gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> >*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > > std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> > const*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > >, __gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> >*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > > >(__gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> > const*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > >, __gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> > const*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > >, __gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> >*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > >) (stl_algobase.h:440)
+==32424==    by 0x303137: __gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> >*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > > std::copy<__gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> > const*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > >, __gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> >*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > > >(__gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> > const*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > >, __gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> > const*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > >, __gnu_cxx::__normal_iterator<std::__debug::vector<double, std::allocator<double> >*, std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > >) (stl_algobase.h:474)
+==32424==    by 0x301E19: std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > >::operator=(std::__cxx1998::vector<std::__debug::vector<double, std::allocator<double> >, std::allocator<std::__debug::vector<double, std::allocator<double> > > > const&) (vector.tcc:238)
+==32424== 
+==32424== 1,624 bytes in 7 blocks are still reachable in loss record 112 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x324608: RunFrequencyReuseTechniques(int, int, double) (frequency-reuse-helper.h:113)
+==32424==    by 0x324DCB: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:188)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 1,792 bytes in 7 blocks are still reachable in loss record 113 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x13ED6D: __gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x13CE9C: std::allocator_traits<std::allocator<double> >::allocate(std::allocator<double>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x13A5A7: std::__cxx1998::_Vector_base<double, std::allocator<double> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x13BBAE: void std::__cxx1998::vector<double, std::allocator<double> >::_M_realloc_insert<double>(__gnu_cxx::__normal_iterator<double*, std::__cxx1998::vector<double, std::allocator<double> > >, double&&) (vector.tcc:440)
+==32424==    by 0x13912F: void std::__cxx1998::vector<double, std::allocator<double> >::emplace_back<double>(double&&) (vector.tcc:121)
+==32424==    by 0x135ABD: void std::__debug::vector<double, std::allocator<double> >::emplace_back<double>(double&&) (vector:499)
+==32424==    by 0x1331AD: __gnu_cxx::__enable_if<!std::__are_same<double, bool>::__value, void>::__type std::__debug::vector<double, std::allocator<double> >::push_back<double>(double&&) (vector:488)
+==32424==    by 0x319688: BandwidthManager::BandwidthManager(double, double, int, int, bool) (bandwidth-manager.cpp:73)
+==32424==    by 0x32463C: RunFrequencyReuseTechniques(int, int, double) (frequency-reuse-helper.h:113)
+==32424==    by 0x324DCB: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:188)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 1,792 bytes in 7 blocks are still reachable in loss record 114 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x13ED6D: __gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x13CE9C: std::allocator_traits<std::allocator<double> >::allocate(std::allocator<double>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x13A5A7: std::__cxx1998::_Vector_base<double, std::allocator<double> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==32424==    by 0x13BBAE: void std::__cxx1998::vector<double, std::allocator<double> >::_M_realloc_insert<double>(__gnu_cxx::__normal_iterator<double*, std::__cxx1998::vector<double, std::allocator<double> > >, double&&) (vector.tcc:440)
+==32424==    by 0x13912F: void std::__cxx1998::vector<double, std::allocator<double> >::emplace_back<double>(double&&) (vector.tcc:121)
+==32424==    by 0x135ABD: void std::__debug::vector<double, std::allocator<double> >::emplace_back<double>(double&&) (vector:499)
+==32424==    by 0x1331AD: __gnu_cxx::__enable_if<!std::__are_same<double, bool>::__value, void>::__type std::__debug::vector<double, std::allocator<double> >::push_back<double>(double&&) (vector:488)
+==32424==    by 0x31973A: BandwidthManager::BandwidthManager(double, double, int, int, bool) (bandwidth-manager.cpp:82)
+==32424==    by 0x32463C: RunFrequencyReuseTechniques(int, int, double) (frequency-reuse-helper.h:113)
+==32424==    by 0x324DCB: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:188)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 2,016 bytes in 21 blocks are still reachable in loss record 115 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x252574: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x250BA7: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > > >&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x24E0CE: std::_Rb_tree<int, std::pair<int const, std::__debug::vector<int, std::allocator<int> > >, std::_Select1st<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > >, std::less<int>, std::allocator<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > > >::_M_get_node() (stl_tree.h:580)
+==32424==    by 0x24BEAB: std::_Rb_tree_node<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > >* std::_Rb_tree<int, std::pair<int const, std::__debug::vector<int, std::allocator<int> > >, std::_Select1st<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > >, std::less<int>, std::allocator<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > > >::_M_create_node<std::pair<int, std::__debug::vector<int, std::allocator<int> > > >(std::pair<int, std::__debug::vector<int, std::allocator<int> > >&&) (stl_tree.h:630)
+==32424==    by 0x245BB3: std::pair<std::_Rb_tree_iterator<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > >, bool> std::_Rb_tree<int, std::pair<int const, std::__debug::vector<int, std::allocator<int> > >, std::_Select1st<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > >, std::less<int>, std::allocator<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > > >::_M_emplace_unique<std::pair<int, std::__debug::vector<int, std::allocator<int> > > >(std::pair<int, std::__debug::vector<int, std::allocator<int> > >&&) (stl_tree.h:2413)
+==32424==    by 0x240C99: std::enable_if<std::is_constructible<std::pair<int const, std::__debug::vector<int, std::allocator<int> > >, std::pair<int, std::__debug::vector<int, std::allocator<int> > > >::value, std::pair<std::_Rb_tree_iterator<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > >, bool> >::type std::__cxx1998::map<int, std::__debug::vector<int, std::allocator<int> >, std::less<int>, std::allocator<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > > >::insert<std::pair<int, std::__debug::vector<int, std::allocator<int> > > >(std::pair<int, std::__debug::vector<int, std::allocator<int> > >&&) (stl_map.h:815)
+==32424==    by 0x23D2B4: std::pair<__gnu_debug::_Safe_iterator<std::_Rb_tree_iterator<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > >, std::__debug::map<int, std::__debug::vector<int, std::allocator<int> >, std::less<int>, std::allocator<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > > >, std::bidirectional_iterator_tag>, bool> std::__debug::map<int, std::__debug::vector<int, std::allocator<int> >, std::less<int>, std::allocator<std::pair<int const, std::__debug::vector<int, std::allocator<int> > > > >::insert<std::pair<int, std::__debug::vector<int, std::allocator<int> > >, void>(std::pair<int, std::__debug::vector<int, std::allocator<int> > >&&) (map.h:283)
+==32424==    by 0x256316: AllocationMap::addElement(int, int) (allocation-map.cpp:49)
+==32424==    by 0x222ECE: GnbBaselineRandomAccess::SetRachReservedSubChannels() (gnb-baseline-random-access.cpp:85)
+==32424==    by 0x22795D: MakeEvent<void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*>(void (GnbBaselineRandomAccess::*)(), GnbBaselineRandomAccess*)::EventMemberImpl0::RunEvent() (make-event.h:95)
+==32424==    by 0x318326: Simulator::ProcessOneEvent() (simulator.cpp:92)
+==32424== 
+==32424== 2,856 bytes in 7 blocks are still reachable in loss record 116 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x271C49: GnbMacEntity::GnbMacEntity() (gnb-mac-entity.cpp:50)
+==32424==    by 0x2CF1A4: ProtocolStack::ProtocolStack(NetworkNode*) (protocol-stack.cpp:38)
+==32424==    by 0x12E94C: GNodeB::GNodeB(int, Cell*, double, double, double) (GNodeB.cpp:92)
+==32424==    by 0x12E771: GNodeB::GNodeB(int, Cell*) (GNodeB.cpp:56)
+==32424==    by 0x324FE8: SingleCellWithInterference(int, char**) (single-cell-with-interference.h:211)
+==32424==    by 0x34FDDC: main (5G-simulator.cpp:103)
+==32424== 
+==32424== 3,528 bytes in 7 blocks are still reachable in loss record 117 of 117
+==32424==    at 0x483CFE3: operator new(unsigned long) (vg_replace_malloc.c:422)
+==32424==    by 0x23300A: __gnu_cxx::new_allocator<GnbBaselineRandomAccess::rarElement>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==32424==    by 0x2322E7: std::allocator_traits<std::allocator<GnbBaselineRandomAccess::rarElement> >::allocate(std::allocator<GnbBaselineRandomAccess::rarElement>&, unsigned long) (alloc_traits.h:443)
+==32424==    by 0x231449: std::__cxx1998::_Deque_base<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::_M_allocate_node() (stl_deque.h:620)
+==32424==    by 0x22FCDA: std::__cxx1998::_Deque_base<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::_M_create_nodes(GnbBaselineRandomAccess::rarElement**, GnbBaselineRandomAccess::rarElement**) (stl_deque.h:745)
+==32424==    by 0x22CE91: std::__cxx1998::_Deque_base<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::_M_initialize_map(unsigned long) (stl_deque.h:719)
+==32424==    by 0x229DF9: std::__cxx1998::_Deque_base<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::_Deque_base() (stl_deque.h:510)
+==32424==    by 0x22769F: std::__cxx1998::deque<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::deque() (stl_deque.h:915)
+==32424==    by 0x2259B2: std::__debug::deque<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >::deque() (deque:97)
+==32424==    by 0x225A0F: std::queue<GnbBaselineRandomAccess::rarElement, std::__debug::deque<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> > >::queue<std::__debug::deque<GnbBaselineRandomAccess::rarElement, std::allocator<GnbBaselineRandomAccess::rarElement> >, void>() (stl_queue.h:161)
+==32424==    by 0x222A4B: GnbBaselineRandomAccess::GnbBaselineRandomAccess() (gnb-baseline-random-access.cpp:35)
+==32424==    by 0x222C97: GnbBaselineRandomAccess::GnbBaselineRandomAccess(MacEntity*) (gnb-baseline-random-access.cpp:52)
+==32424== 
+==32424== LEAK SUMMARY:
+==32424==    definitely lost: 112 bytes in 2 blocks
+==32424==    indirectly lost: 128 bytes in 2 blocks
+==32424==      possibly lost: 0 bytes in 0 blocks
+==32424==    still reachable: 37,752 bytes in 436 blocks
+==32424==         suppressed: 0 bytes in 0 blocks
+==32424== 
+==32424== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

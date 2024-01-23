@@ -232,7 +232,7 @@ BandwidthManager::Print (void)
         {
           cout << m_NbIoTchannels.at (i) << " ";
         }
-      cout << endl;
+      //cout << endl;
       std::cout.precision(3);
 
     }
@@ -248,14 +248,14 @@ BandwidthManager::Print (void)
         {
           cout << m_dlSubChannels.at (i) << " ";
         }
-      cout << endl;
+      //cout << endl;
 
       cout << "\t UL channels: ";
       for (int i = 0; i < (int) m_ulSubChannels.size (); i++)
         {
           cout << m_ulSubChannels.at (i) << " ";
         }
-      cout << endl;
+      //cout << endl;
     }
 }
 

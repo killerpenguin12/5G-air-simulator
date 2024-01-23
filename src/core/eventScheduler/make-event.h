@@ -196,6 +196,41 @@ MakeEvent (MEM mem_ptr, OBJ obj, T1 a1, T2 a2, T3 a3)
   shared_ptr<Event> ev1(ev);
   return ev1;
 }
+
+// template <typename MEM, typename OBJ,
+//           typename T1, typename T2, typename T3, typename T4>
+// shared_ptr<Event>
+// MakeEvent (MEM mem_ptr, OBJ obj, T1 a1, T2 a2, T3 a3, T4 a4)
+// {
+//   // four argument version
+//   class EventMemberImpl1c : public Event
+//   {
+//   public:
+//     EventMemberImpl1c (OBJ obj, MEM function, T1 a1, T2 a2, T3 a3, T4 a4)
+//       : m_obj (obj),
+//         m_function (function),
+//         m_a1 (a1),
+//         m_a2 (a2),
+//         m_a3 (a3),
+//         m_a4 (a4)
+//     {}
+//     virtual ~EventMemberImpl1c () {}
+//   private:
+//     virtual void RunEvent (void)
+//     {
+//       (EventMemberImplObjTraits<OBJ>::GetReference (m_obj).*m_function) (m_a1, m_a2, m_a3, m_a4);
+//     }
+//     OBJ m_obj;
+//     MEM m_function;
+//     T1 m_a1;
+//     T2 m_a2;
+//     T3 m_a3;
+//     T4 m_a4;
+//   }
+//   *ev = new EventMemberImpl1c (obj, mem_ptr, a1, a2, a3, a4);
+//   shared_ptr<Event> ev1(ev);
+//   return ev1;
+// }
 /*
 shared_ptr<Event>
 MakeEvent (void (*f) (void))

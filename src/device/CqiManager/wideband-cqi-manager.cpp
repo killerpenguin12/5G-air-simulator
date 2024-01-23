@@ -42,7 +42,7 @@ DEBUG_LOG_START_1(SIM_ENV_AMC_MAPPING)
     {
       cout << sinr.at (i) << " ";
     }
-  cout << endl;
+  //cout << endl;
 DEBUG_LOG_END
 
   AMCModule *amc = GetDevice ()->GetProtocolStack ()->GetMacEntity ()->GetAmcModule ();

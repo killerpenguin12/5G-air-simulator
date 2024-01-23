@@ -168,7 +168,7 @@ DEBUG_LOG_START_1(SIM_ENV_RZF_DEBUG)
   for (auto channel:channelMatrices) {
     cout << arma::mean(arma::abs(*channel),1) << " ";
   }
-  cout << endl;
+  //cout << endl;
 DEBUG_LOG_END
 
 

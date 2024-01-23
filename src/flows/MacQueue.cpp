@@ -392,7 +392,7 @@ MacQueue::CheckForDropPackets (double maxDelay,
                             << " START " << GetPacketQueue ()->begin ()->GetPacket()->GetPacketTags()->GetStartByte()
                             << " END " << GetPacketQueue ()->begin ()->GetPacket()->GetPacketTags()->GetEndByte();
                 }
-              cout  <<  endl;
+              //cout  <<  endl;
             }
 
           int size = GetPacketQueue ()->begin ()->GetSize() - GetPacketQueue ()->begin ()->GetFragmentOffset();

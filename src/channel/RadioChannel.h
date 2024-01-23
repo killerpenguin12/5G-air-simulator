@@ -57,6 +57,7 @@ private:
   vector<NetworkNode*> *m_attachedDevices; //list of devices attached to the channel
 
   PropagationLossModel* m_propagationLossModel;
+  
 
   int m_channelId;
 };

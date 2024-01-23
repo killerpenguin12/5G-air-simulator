@@ -45,7 +45,6 @@ class Simulator
 private:
   Simulator ();
   static Simulator *ptr;
-
   Calendar *m_calendar;
   bool m_stop;
   unsigned long long int m_currentUid;
@@ -71,7 +70,7 @@ public:
   }
 
   double Now (void);
-
+  void Reset(void);
   void Run (void);
   void Stop (void);
   void SetStop (double time);

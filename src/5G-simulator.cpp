@@ -98,10 +98,10 @@ main (int argc, char *argv[])
         {
           SingleCellWithoutInterference (argc, argv);
         }
-      if (strcmp(argv[1], "SingleCellWithI")==0)
-        {
-          SingleCellWithInterference (argc, argv);
-        }
+      //if (strcmp(argv[1], "SingleCellWithI")==0)
+        // {
+        //   SingleCellWithInterference (argc, argv);
+        // }
       if (strcmp(argv[1], "MultiCell")==0)
         {
           MultiCell (argc, argv);

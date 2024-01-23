@@ -217,26 +217,26 @@ void nbUplinkPacketScheduler::printMap()
     {
       cout << id << "\t";
     }
-  cout << endl << "- TTI\t";
+  //cout << endl << "- TTI\t";
   for (auto tti : m_RUmap[1])
     {
       cout << tti << "\t";
     }
-  cout << endl << "- MCS\t";
+  //cout << endl << "- MCS\t";
   for (auto mcs : m_RUmap[2])
     {
       cout << mcs << "\t";
     }
-  cout << endl << "- TBS\t";
+  //cout << endl << "- TBS\t";
   for (auto tbs : m_RUmap[3])
     {
       cout << tbs << "\t";
     }
-  cout << endl << "- RU\t";
+  //cout << endl << "- RU\t";
   for (auto ru : m_RUmap[4])
     {
       cout << ru << "\t";
     }
-  cout << endl;
+  //cout << endl;
 }
 

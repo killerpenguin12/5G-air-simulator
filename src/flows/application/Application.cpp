@@ -475,7 +475,7 @@ Application::Trace (Packet* p)
   if (GetDestination ()->GetNodeType() == NetworkNode::TYPE_UE)
     {
       UserEquipment* ue = (UserEquipment*) GetDestination ();
-      cout << " ID " << p->GetID ()
+      cout << " ID here" << p->GetID ()
                 << " B " << GetApplicationID ()
                 << " SIZE " << p->GetSize ()
                 << " SRC " << GetSource ()->GetIDNetworkNode ()
@@ -488,7 +488,7 @@ Application::Trace (Packet* p)
     }
   else
     {
-      cout << " ID " << p->GetID ()
+      cout << " ID here two" << p->GetID ()
                 << " B " << GetApplicationID ()
                 << " SIZE " << p->GetSize ()
                 << " SRC " << GetSource ()->GetIDNetworkNode ()

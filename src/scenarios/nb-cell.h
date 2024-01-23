@@ -116,10 +116,10 @@ static void nbCell (int argc, char *argv[])
       seed = -1;
     }
 
-    for(auto it = ceProb.cbegin(); it != ceProb.cend(); ++it)
-    {
-        std::cout << it->first << " " << it->second << "\n";
-    }
+    // for(auto it = ceProb.cbegin(); it != ceProb.cend(); ++it)
+    // {
+    //     std::cout << it->first << " " << it->second << "\n";
+    // }
 
 
   // define simulation times
@@ -267,7 +267,7 @@ DEBUG_LOG_END
       distance = spaDis(gen) + (double) low;
 
       cout << " DISTANCE " << distance;
-      cout << endl;
+      //cout << endl;
 
       sign = (sig(gen) % 2) * 2 - 1;
       posX=distance / sqrt(2) * sign;

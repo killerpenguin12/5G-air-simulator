@@ -43,7 +43,8 @@ public:
     RANDOM_WALK,
     RANDOM_WAYPOINT,
     MANHATTAN,
-    LINEAR_MOVEMENT
+    LINEAR_MOVEMENT,
+    INPUT
   };
 
   void

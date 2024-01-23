@@ -107,6 +107,9 @@ PacketScheduler::FlowToSchedule::FlowToSchedule(RadioBearer* bearer, int dataToT
   else
     {
       cout << "No UE found as source or destination for application ID " << bearer->GetApplication () << endl;
+      std::ofstream ofs;
+      ofs.open("/home/jonathan/Desktop/5G_uav_sim/src/output.txt", std::ofstream::out | std::ofstream::trunc);
+      ofs.close();
       exit(1);
     }
   m_ueRecord = m_ue->GetTargetNodeRecord();

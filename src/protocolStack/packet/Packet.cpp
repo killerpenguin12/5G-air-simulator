@@ -216,7 +216,7 @@ Packet::SetPacketTags (PacketTAGs* tags)
 Packet*
 Packet::Copy (void)
 {
-  Packet *p = new Packet ();
+  Packet *p = new Packet (); //memory leak
   p->m_id = m_id;
   p->m_timeStamp = m_timeStamp;
 

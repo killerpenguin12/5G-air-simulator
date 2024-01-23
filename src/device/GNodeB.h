@@ -48,7 +48,7 @@ public:
     void SetUE (UserEquipment *UE);
     UserEquipment* GetUE (void) const;
 
-    bool m_cqiAvailable;
+    bool m_cqiAvailable = false;
     bool CqiAvailable(void);
 
     vector<int> m_cqiFeedback;

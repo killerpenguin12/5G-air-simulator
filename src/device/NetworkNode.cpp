@@ -41,6 +41,7 @@ class UserEquipment;
 NetworkNode::NetworkNode()
 {
   m_cell = nullptr;
+  m_classifier = nullptr;
   m_protocolStack = nullptr;
   m_phy = nullptr;
   m_mobility = nullptr;
@@ -57,8 +58,9 @@ NetworkNode::Destroy ()
 {
   delete m_classifier;
   delete m_phy;
-  delete m_protocolStack;
+  //delete m_protocolStack;
   delete m_mobility;
+  delete m_multicastDest;
 }
 
 void

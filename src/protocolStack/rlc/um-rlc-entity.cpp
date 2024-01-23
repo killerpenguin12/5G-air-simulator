@@ -213,7 +213,7 @@ DEBUG_LOG_END
                         << " START " << pp->GetPacketTags()->GetStartByte()
                         << " END " << pp->GetPacketTags()->GetEndByte();
             }
-          cout  <<  endl;
+         // cout  <<  endl;
         }
 
       ClearIncomingPackets ();
@@ -292,7 +292,7 @@ DEBUG_LOG_END
                             << " START " << p->GetPacketTags()->GetStartByte()
                             << " END " << p->GetPacketTags()->GetEndByte();
                 }
-              cout  <<  endl;
+              //cout  <<  endl;
             }
 
           ClearIncomingPackets ();

@@ -50,14 +50,21 @@ Simulator::~Simulator ()
 {
   while (!m_calendar->IsEmpty ())
     {
+
       m_calendar->RemoveEvent ();
     }
   delete m_calendar;
 }
 
+void Simulator::Reset(void)
+{
+  m_stop = 0;
+}
+
 double
 Simulator::Now (void)
 {
+  //std::cout << "5" << std::endl;
   return m_currentTs;
 }
 
@@ -70,6 +77,7 @@ Simulator::Run (void)
    * The simulation will end when no events are into the
    * calendar list.
    */
+  //std::cout << "is m_stop the issue?: " << m_stop << std::endl;
   while (!m_calendar->IsEmpty () && !m_stop)
     {
       ProcessOneEvent ();
@@ -103,7 +111,7 @@ Simulator::GetUID (void)
 void
 Simulator::Stop (void)
 {
-  cout << " SIMULATOR_DEBUG: Stop (" << m_lastAssignedUid << " events)" << endl;
+  //cout << " SIMULATOR_DEBUG: Stop (" << m_lastAssignedUid << " events)" << endl;
   m_stop = true;
 }
 

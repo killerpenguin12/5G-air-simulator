@@ -20,7 +20,7 @@
  * Author: Alessandro Grassi <alessandro.grassi@poliba.it>
  */
 
-
+#include <random>
 #include "ideal-control-messages.h"
 #include "../../device/NetworkNode.h"
 

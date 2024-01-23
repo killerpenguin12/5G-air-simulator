@@ -30,7 +30,7 @@ Gateway::Gateway()
   SetMobilityModel (0);
   SetPhy (0);
 
-  ProtocolStack *stack = new ProtocolStack (this);
+  ProtocolStack *stack = new ProtocolStack (this); //memory leak
   SetProtocolStack (stack);
 
   SetCell (0);

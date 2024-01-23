@@ -84,7 +84,7 @@ GNodeB::GNodeB (int idElement,
   delete position;
 
   m_userEquipmentRecords = new UserEquipmentRecords;
-
+  //Coulton HERE!
   GnbPhy *phy = new GnbPhy ();
   phy->SetDevice(this);
   SetPhy (phy);

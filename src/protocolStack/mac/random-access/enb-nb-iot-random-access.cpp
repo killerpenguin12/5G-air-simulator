@@ -131,7 +131,7 @@ void GnbNbIoTRandomAccess::SetRachReservedSubChannels()
                         
                     }
                     DEBUG_LOG_START_1(SIM_ENV_TEST_RANDOM_ACCESS_NB)
-                    cout << endl;
+                    //cout << endl;
                     DEBUG_LOG_END
                     
                     std::map<int,vector<int>>::const_iterator it = m_tonesReservedForRach[i.first].find(currentSF+1);

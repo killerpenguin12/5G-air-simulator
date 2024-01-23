@@ -495,7 +495,7 @@ DownlinkPacketScheduler::RBsAllocation ()
             for (int jj = 0; jj < nbOfRBs; jj++) {
                 cout << " " << metrics[jj][ii];
             }
-            cout << endl;
+           // cout << endl;
         }
         DEBUG_LOG_END
     
@@ -760,7 +760,7 @@ DownlinkPacketScheduler::RBsAllocation ()
             cout << flow->GetUe()->GetIDNetworkNode() << " ";
         }
     }
-    cout << endl;
+    //cout << endl;
     DEBUG_LOG_END
     
     //Finalize the allocation

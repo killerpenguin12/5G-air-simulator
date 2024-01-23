@@ -909,7 +909,7 @@ NetworkManager::PrintUEsForEachCell (void)
     {
       cout << " " << record->GetNbOfUserEquipmentRecords();
     }
-  cout << endl;
+  //cout << endl;
 }
 
 
@@ -1020,6 +1020,6 @@ NetworkManager::PrintUserPosition (void)
     {
       cout << user->GetMobilityModel ()->GetAbsolutePosition()->GetCoordinateY() << " ";
     }
-  cout << endl;
+  //cout << endl;
 }
 

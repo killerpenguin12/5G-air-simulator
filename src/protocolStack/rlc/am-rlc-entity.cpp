@@ -442,7 +442,7 @@ DEBUG_LOG_END
   for (auto amdRecord : *GetSentAMDs() ) {
     if (amdRecord->m_retx_count_timer == 1) {
       queue->SetQueueSize(queue->GetQueueSize()+amdRecord->m_packet->GetSize());
-      cout<<endl;
+      //cout<<endl;
     }
     amdRecord->m_retx_count_timer--;
   }
@@ -503,7 +503,7 @@ AmRlcEntity::ReceptionProcedure (Packet* p)
   msg.SetAck (seqNumber);
   msg.SetStartByte (p->GetRLCHeader ()->GetStartByte ());
   msg.SetEndByte (p->GetRLCHeader ()->GetEndByte ());
-  SendArqRlcIdealControlMessage (msg);
+  //SendArqRlcIdealControlMessage (msg);
   //}
 
   //The received packet is not a fragment
@@ -695,9 +695,20 @@ DEBUG_LOG_END
 
   //send AM RLC ACK to the receiver RLC under ideal control channel
   RadioBearerSink* thisBearer = (RadioBearerSink*) GetRadioBearerInstance ();
+  if(thisBearer == nullptr)
+    cout << "thisBearer is nullptr" << endl;
   ApplicationSink *thisApplication = (ApplicationSink*) thisBearer->GetApplication ();
+  if(thisApplication == nullptr)
+    cout << "thisApplication is nullptr" << endl;
+  if(thisApplication->GetSourceApplication () == nullptr)
+    cout << "thisApplication->GetSourceApplication () is nullptr" << endl;
+  if(thisApplication->GetSourceApplication ()->GetRadioBearer () == nullptr)
+    cout << "thisApplication->GetSourceApplication ()->GetRadioBearer () is nullptr" << endl;
   RadioBearer* remoteBearer = thisApplication->GetSourceApplication ()->GetRadioBearer ();
-
+  //HERE IS WHERE THE nullptr is called
+  
+  if(remoteBearer == nullptr)
+    cout << "remoteBearer is nullptr" << endl;
   AmRlcEntity* remoteRlc = (AmRlcEntity*) remoteBearer->GetRlcEntity();
   remoteRlc->ReceiveArqRlcIdealControlMessage (msg);
 }
@@ -782,7 +793,7 @@ DEBUG_LOG_END
                                 << " START " << amdRecord->m_packet->GetPacketTags()->GetStartByte()
                                 << " END " << amdRecord->m_packet->GetPacketTags()->GetEndByte();
                     }
-                  cout  <<  endl;
+                  //cout  <<  endl;
                 }
             }
           delete amdRecord;

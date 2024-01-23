@@ -63,7 +63,7 @@ using std::queue;
 using std::iota;
 
 /* tracing */
-static bool _APP_TRACING_ = true;
+static bool _APP_TRACING_ = false;
 static bool _RLC_TRACING_ = false;
 static bool _MAC_TRACING_ = false;
 static bool _PHY_TRACING_ = true;

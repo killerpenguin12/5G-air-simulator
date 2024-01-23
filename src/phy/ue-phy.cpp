@@ -49,7 +49,11 @@
 #include "precoding-calculator.h"
 #include "../componentManagers/FrameManager.h"
 #include "../protocolStack/mac/harq-manager.h"
+//#include "../utility/Intelligence.h"
 
+#include <fstream>
+#include <string>
+#include <iostream>
 
 UePhy::UePhy()
 {
@@ -113,14 +117,15 @@ UePhy::DoSetBandwidthManager (void)
     }
   SetTxSignal (txSignal);
 }
-
+//Coulton Here
 void
 UePhy::StartTx (shared_ptr<PacketBurst> p)
 {
 DEBUG_LOG_START_1(SIM_ENV_TEST_DEVICE_ON_CHANNEL)
   cout << "Node " << GetDevice()->GetIDNetworkNode () << " starts phy tx" << endl;
 DEBUG_LOG_END
-
+//cout << "Node " << GetDevice()->GetIDNetworkNode () << " starts phy tx" << endl;
+  //int* vals = 0;
   GetUlChannel ()->StartTx (p, GetTxSignal (), GetDevice ());
 }
 
@@ -130,9 +135,10 @@ UePhy::StartRx (shared_ptr<PacketBurst> p, ReceivedSignal* rxSignal)
 DEBUG_LOG_START_1(SIM_ENV_TEST_DEVICE_ON_CHANNEL)
   cout << "Node " << GetDevice()->GetIDNetworkNode () << " starts phy rx" << endl;
 DEBUG_LOG_END
-
+  //cout << "Node " << GetDevice()->GetIDNetworkNode () << " starts phy rx" << endl;
   m_sinrForCQI.clear();
-
+  //Coulton Here
+  //using namespace Intel;
   //COMPUTE THE SINR
   vector< vector<double> > rxSignalValues;
   vector< vector<float> > rxSignalPhases;
@@ -362,7 +368,7 @@ DEBUG_LOG_END
                         }
                       arma::cx_mat HHTN = avgPower * precodedH0 * arma::trans(precodedH0)
                                         + pow(10,noise_interference/10) * arma::eye<arma::mat>( nbRxAntennas, nbRxAntennas );
-                      arma::cx_mat W = arma::inv( HHTN, true ) * sqrt(avgPower) * precodedH0;
+                      arma::cx_mat W = arma::pinv( HHTN, true ) * sqrt(avgPower) * precodedH0;
                       arma::cx_mat correlation = arma::trans(W)*sqrt(avgPower)*precodedH0;
                       arma::cx_mat D = arma::diagmat(correlation);
                       arma::cx_mat Iself = correlation - D;
@@ -1059,11 +1065,11 @@ DEBUG_LOG_END
         {
           if (phyError)
             {
-              cout << "**** YES PHY ERROR (node " << GetDevice ()->GetIDNetworkNode () << ") ****" << endl;
+              //cout << "**** YES PHY ERROR (node " << GetDevice ()->GetIDNetworkNode () << ") ****" << endl;
             }
           else
             {
-              cout << "**** NO PHY ERROR (node " << GetDevice ()->GetIDNetworkNode () << ") ****" << endl;
+              //cout << "**** NO PHY ERROR (node " << GetDevice ()->GetIDNetworkNode () << ") ****" << endl;
             }
         }
     }
@@ -1084,7 +1090,8 @@ DEBUG_LOG_END
       harqAck->SetAck (!phyError);
       SendIdealControlMessage (harqAck);
     }
-
+    //COULTON HERE IS WHERE THE PLACE IS!!
+string results = "";
 if (_PHY_TRACING_) {
   double effective_sinr = GetMiesmEffectiveSinr (sinrForBLER);
   if (effective_sinr > 40) effective_sinr = 40;
@@ -1094,23 +1101,36 @@ if (_PHY_TRACING_) {
     {
       MCS_ = m_mcsIndexForRx.at(0);
       TBS_ = GetDevice ()->GetProtocolStack ()->GetMacEntity ()->GetAmcModule ()->GetTBSizeFromMCS (m_mcsIndexForRx.at(0), m_mcsIndexForRx.at(0), nbOfRxSubChannels, m_rankForRx);
-      cout << "PHY_RX SRC " << ue->GetTargetNode()->GetIDNetworkNode()
-            << " DST " << ue->GetIDNetworkNode()
-            << " X " << ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateX ()
-            << " Y " << ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateY ()
-            << " SINR " << effective_sinr
-            << " RB " << nbOfRxSubChannels
-            << " MCS " << MCS_
-            << " SIZE " << TBS_
-            << " ERR " << phyError
-            << " T " << Simulator::Init()->Now();
+      // cout << "PHY_RX SRC " << ue->GetTargetNode()->GetIDNetworkNode()
+      //       << " DST " << ue->GetIDNetworkNode()
+      //       << " X " << ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateX ()
+      //       << " Y " << ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateY ()
+      //       << " SINR " << effective_sinr
+      //       << " RB " << nbOfRxSubChannels
+      //       << " MCS " << MCS_
+      //       << " SIZE " << TBS_
+      //       << " ERR " << phyError
+      //       << " T " << Simulator::Init()->Now();
+      //       cout << endl;
             if(std::getenv("USE_COVERSHIFT") != nullptr)
             {
               cout << " CS " << FrameManager::Init()->GetCoverShiftIndex();
             }
-           cout << endl;
+          //  cout << endl;
+           results = std::to_string(ue->GetTargetNode()->GetIDNetworkNode()) + ", " + std::to_string(ue->GetIDNetworkNode()) + ", " + std::to_string(effective_sinr) + ", " + std::to_string(phyError) + ", " + std::to_string(ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateX ()) + ", " + std::to_string(ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateY ()) + ", " + std::to_string(ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateZ ()) + "\n";
+          // cout << "inside of ue-phy" << endl;
+          // cout << results << endl;
+           //std::ofstream file("SINR_out.csv" , std::ios::app );
+          //The variables that are loaded into the csv. 
+          //file << ue->GetTargetNode()->GetIDNetworkNode() << "," << ue->GetIDNetworkNode() << "," << effective_sinr << "," << phyError << "," << ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateX () << "," << ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateY () << "," << ue->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateZ () <<'\n';
+          //  std::cout << "Does this run?" << std::endl;
+          //file.close();
+          std::ofstream out("/home/jonathan/Desktop/5G_uav_sim/src/output.txt", std::ofstream::app);
+          out << results;
+          out.close();
     }
 }
+//cout << "But do we go in here everytime anyways" << endl;
 
   if (!phyError && p->GetNPackets() > 0)
     {

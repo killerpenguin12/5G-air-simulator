@@ -59,7 +59,7 @@ DEBUG_LOG_START_1(SIM_ENV_BLER_DEBUG)
     {
       cout << sinr.at (i) << " ";
     }
-  cout << "\n"<< endl;
+  //cout << "\n"<< endl;
 DEBUG_LOG_END
 
 

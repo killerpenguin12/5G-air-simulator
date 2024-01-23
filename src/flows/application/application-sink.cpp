@@ -121,7 +121,7 @@ ApplicationSink::Receive (Packet* p)
   double delay = ((Simulator::Init()->Now() *10000) - (p->GetTimeStamp () *10000)) /10000;
   if (delay < 0.000001) delay = 0.000001;
 
-  cout << " ID " << p->GetID ()
+  cout << " ID RX here 2" << p->GetID ()
        << " B " << m_sourceApplication->GetApplicationID ()
        << " SIZE " << p->GetPacketTags ()->GetApplicationSize ()
        << " SRC " << p->GetSourceID ()
@@ -134,7 +134,7 @@ ApplicationSink::Receive (Packet* p)
       cout << " " << ue->IsIndoor ();
     }
 
-  cout << endl;
+  //cout << endl;
 
 
   delete p;

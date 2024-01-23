@@ -44,6 +44,7 @@
 
 RadioBearer::RadioBearer()
 {
+  //cout << "when does the original constructor run" << endl;
   m_macQueue = new MacQueue ();
   m_application = nullptr;
 
@@ -60,6 +61,7 @@ RadioBearer::RadioBearer()
 
 RadioBearer::RadioBearer(Application* a)
 {
+  //cout << "when does this one run? " << endl;
   m_macQueue = new MacQueue ();
   m_application = nullptr;
   

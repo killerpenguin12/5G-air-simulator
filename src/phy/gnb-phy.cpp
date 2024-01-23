@@ -90,12 +90,12 @@ GnbPhy::DoSetBandwidthManager (void)
 
   SetTxSignal (txSignal);
 }
-
+//Coulton Here!
 void
 GnbPhy::StartTx (shared_ptr<PacketBurst> p)
 {
   //cout << "Node " << GetDevice()->GetIDNetworkNode () << " starts phy tx" << endl;
-
+  //int* vals = 0;
   if (FrameManager::Init()->MbsfnEnabled()==true && FrameManager::Init()->isMbsfnSubframe()==true)
     {
       GetDlMcChannel ()->StartTx (p, GetTxSignal (), GetDevice ());
@@ -105,7 +105,7 @@ GnbPhy::StartTx (shared_ptr<PacketBurst> p)
       GetDlChannel ()->StartTx (p, GetTxSignal (), GetDevice ());
     }
 }
-
+//Coulton Here!
 void
 GnbPhy::StartRx (shared_ptr<PacketBurst> p, TransmittedSignal* txSignal)
 {

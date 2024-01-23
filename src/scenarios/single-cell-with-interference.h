@@ -48,33 +48,46 @@
 #include <cstring>
 #include <iostream>
 
-static void SingleCellWithInterference (int argc, char *argv[])
+// 
+//radius is in Km. 
+//
+//static void SingleCellWithInterference (int argc, char *argv[])
+static void SingleCellWithInterference (double radius, int nbUE, std::vector<double> posX, std::vector<double> posY, std::vector<int> speed, std::vector<double> speedDirection, int seed, int nbCells)
 {
-  int nbCells = atoi(argv[2]);
-  double radius = atof(argv[3]);
-  int nbUE = atoi(argv[4]);
-  int nbVoIP = atoi(argv[5]);
-  int nbVideo = atoi(argv[6]);
-  int nbBE = atoi(argv[7]);
-  int nbCBR = atoi(argv[8]);
-  int sched_type = atoi(argv[9]);
-  int frame_struct = atoi(argv[10]);
-  int speed = atoi(argv[11]);
-  double maxDelay = atof(argv[12]);
-  int videoBitRate = atoi(argv[13]);
-  int seed;
-  if (argc==15)
-    {
-      seed = atoi(argv[14]);
-    }
-  else
-    {
-      seed = -1;
-    }
-
+  //int nbCells = 7;
+  int sched_type = 1;
+  int frame_struct = 1;
+  //int speed = 1;
+  double maxDelay = 1;
+  int nbCBR = 1;
+  //This can model interCell interference.But each vehicle is only 
+  //assigned to one cell, the other cells are just interference.
+  // int nbCells = atoi(argv[2]);
+  // double radius = atof(argv[3]);
+  // int nbUE = atoi(argv[4]);
+  // int nbVoIP = atoi(argv[5]);
+  // int nbVideo = atoi(argv[6]);
+  // int nbBE = atoi(argv[7]);
+  // int nbCBR = atoi(argv[8]);
+  // int sched_type = atoi(argv[9]);
+  // int frame_struct = atoi(argv[10]);
+  // int speed = atoi(argv[11]);
+  // double maxDelay = atof(argv[12]);
+  // int videoBitRate = atoi(argv[13]);
+  // int seed;
+  // if (argc==15)
+  //   {
+  //     seed = atoi(argv[14]);
+  //   }
+  // else
+  //   {
+  //     seed = -1;
+  //   }
+  // "\t ./5G-air-simulator SingleCellWithI nCell r nUE nVoip nVid nBE nCBR sched frStr speed maxD vidRate (seed)"
+  //           "\n\t\t --> ./5G-air-simulator SingleCellWithI 7 1 1 0 0 1 0 1 1 3 0.1 128"
   // define simulation times
-  double duration = 46;
-  double flow_duration = 40;
+  double duration = 1.0;
+  double flow_duration = 0.9;
 
 
   int cluster = 4;
@@ -94,7 +107,7 @@ static void SingleCellWithInterference (int argc, char *argv[])
     {
       srand (time(nullptr));
     }
-  cout << "Simulation with SEED = " << seed << endl;
+  //cout << "Simulation with SEED = " << seed << endl;
 
   // SET SCHEDULING ALLOCATION SCHEME
   GNodeB::DLSchedulerType downlink_scheduler_type;
@@ -102,35 +115,35 @@ static void SingleCellWithInterference (int argc, char *argv[])
     {
     case 1:
       downlink_scheduler_type = GNodeB::DLScheduler_TYPE_PROPORTIONAL_FAIR;
-      cout << "Scheduler PF "<< endl;
+      //cout << "Scheduler PF "<< endl;
       break;
     case 2:
       downlink_scheduler_type = GNodeB::DLScheduler_TYPE_MLWDF;
-      cout << "Scheduler MLWDF "<< endl;
+      //cout << "Scheduler MLWDF "<< endl;
       break;
     case 3:
       downlink_scheduler_type = GNodeB::DLScheduler_TYPE_EXP;
-      cout << "Scheduler EXP "<< endl;
+      //cout << "Scheduler EXP "<< endl;
       break;
     case 4:
       downlink_scheduler_type = GNodeB::DLScheduler_TYPE_FLS;
-      cout << "Scheduler FLS "<< endl;
+      //cout << "Scheduler FLS "<< endl;
       break;
     case 5:
       downlink_scheduler_type = GNodeB::DLScheduler_EXP_RULE;
-      cout << "Scheduler EXP_RULE "<< endl;
+      //cout << "Scheduler EXP_RULE "<< endl;
       break;
     case 6:
       downlink_scheduler_type = GNodeB::DLScheduler_LOG_RULE;
-      cout << "Scheduler LOG RULE "<< endl;
+      //cout << "Scheduler LOG RULE "<< endl;
       break;
     case 7:
       downlink_scheduler_type = GNodeB::DLScheduler_TYPE_MAXIMUM_THROUGHPUT;
-      cout << "Scheduler MT "<< endl;
+     // cout << "Scheduler MT "<< endl;
       break;
     case 8:
       downlink_scheduler_type = GNodeB::DLScheduler_TYPE_ROUND_ROBIN;
-      cout << "Scheduler RR "<< endl;
+      //cout << "Scheduler RR "<< endl;
       break;
     default:
       downlink_scheduler_type = GNodeB::DLScheduler_TYPE_PROPORTIONAL_FAIR;
@@ -148,7 +161,7 @@ static void SingleCellWithInterference (int argc, char *argv[])
       frame_structure = FrameManager::FRAME_STRUCTURE_TDD;
       break;
     default:
-      cout << "Error: invalid frame structure specified!" << endl;
+      //cout << "Error: invalid frame structure specified!" << endl;
       exit(1);
     }
   frameManager->SetFrameStructure(frame_structure);
@@ -167,17 +180,17 @@ static void SingleCellWithInterference (int argc, char *argv[])
       cells->push_back (c);
       nm->GetCellContainer ()->push_back (c);
 
-      cout << "Created Cell, id " << c->GetIdCell ()
-                <<", position: " << c->GetCellCenterPosition ()->GetCoordinateX ()
-                << " " << c->GetCellCenterPosition ()->GetCoordinateY () << endl;
+      // cout << "Created Cell, id " << c->GetIdCell ()
+      //           <<", position: " << c->GetCellCenterPosition ()->GetCoordinateX ()
+      //           << " " << c->GetCellCenterPosition ()->GetCoordinateY () << endl;
     }
 
 
   vector <BandwidthManager*> spectrums = RunFrequencyReuseTechniques (nbCells, cluster, bandwidth);
-
+  //cout << "1 " << endl;
   //Create a set of a couple of channels
-  vector <RadioChannel*> *dlChannels = new vector <RadioChannel*>;
-  vector <RadioChannel*> *ulChannels = new vector <RadioChannel*>;
+  vector <RadioChannel*> *dlChannels = new vector <RadioChannel*>;// definately lost
+  vector <RadioChannel*> *ulChannels = new vector <RadioChannel*>; //memory leak
   for (int i= 0; i < nbCells; i++)
     {
       RadioChannel *dlCh = new RadioChannel ();
@@ -188,7 +201,6 @@ static void SingleCellWithInterference (int argc, char *argv[])
       ulCh->SetChannelId (i);
       ulChannels->push_back (ulCh);
     }
-
 
   //create gNBs
   vector <GNodeB*> *gNBs = new vector <GNodeB*>;
@@ -202,14 +214,14 @@ static void SingleCellWithInterference (int argc, char *argv[])
 
       gnb->GetPhy ()->SetBandwidthManager (spectrums.at (i));
 
-      cout << "Created gnb, id " << gnb->GetIDNetworkNode()
-                << ", cell id " << gnb->GetCell ()->GetIdCell ()
-                <<", position: " << gnb->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateX ()
-                << " " << gnb->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateY ()
-                << ", channels id " << gnb->GetPhy ()->GetDlChannel ()->GetChannelId ()
-                << gnb->GetPhy ()->GetUlChannel ()->GetChannelId ()  << endl;
+      // cout << "Created gnb, id " << gnb->GetIDNetworkNode()
+      //           << ", cell id " << gnb->GetCell ()->GetIdCell ()
+      //           <<", position: " << gnb->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateX ()
+      //           << " " << gnb->GetMobilityModel ()->GetAbsolutePosition ()->GetCoordinateY ()
+      //           << ", channels id " << gnb->GetPhy ()->GetDlChannel ()->GetChannelId ()
+      //           << gnb->GetPhy ()->GetUlChannel ()->GetChannelId ()  << endl;
 
-      spectrums.at (i)->Print ();
+      //spectrums.at (i)->Print ();
 
 
       ulChannels->at (i)->AddDevice(gnb);
@@ -224,21 +236,17 @@ static void SingleCellWithInterference (int argc, char *argv[])
 
   //Define Application Container
   int nbCell=1;
-  VoIP VoIPApplication[nbVoIP*nbCell*nbUE];
-  TraceBased VideoApplication[nbVideo*nbCell*nbUE];
-  InfiniteBuffer BEApplication[nbBE*nbCell*nbUE];
+  //Only use CBR. It generates packets of a fixed size at fixed regular intervals, 
+  //which are both input parameters. We know the data size of both RealID and ADS-B
   CBR CBRApplication[nbCBR*nbCell*nbUE];
-  int voipApplication = 0;
-  int videoApplication = 0;
   int cbrApplication = 0;
-  int beApplication = 0;
   int destinationPort = 101;
   int applicationID = 0;
 
 
 
   //Create GW
-  Gateway *gw = new Gateway ();
+  Gateway *gw = new Gateway (); //indirectly lost
   nm->GetGatewayContainer ()->push_back (gw);
 
   //Create UEs
@@ -246,25 +254,33 @@ static void SingleCellWithInterference (int argc, char *argv[])
   for (int i = 0; i < nbUE; i++)
     {
       //ue's random position
-      double posX = (double)rand()/RAND_MAX;
-      posX = 0.95 *
-             (((2*radius*1000)*posX) - (radius*1000));
-      double posY = (double)rand()/RAND_MAX;
-      posY = 0.95 *
-             (((2*radius*1000)*posY) - (radius*1000));
+      // double posX = (double)rand()/RAND_MAX;
+      // posX = 0.95 *
+      //        (((2*radius*1000)*posX) - (radius*1000));
+      // double posY = (double)rand()/RAND_MAX;
+      // posY = 0.95 *
+      //        (((2*radius*1000)*posY) - (radius*1000));
 
-      double speedDirection = GetRandomVariable (360.) * ((2.*M_PI)/360.);
+      // double speedDirection = GetRandomVariable (360.) * ((2.*M_PI)/360.);
 
       UserEquipment* ue = new UserEquipment (idUE,
-                                             posX, posY, speed, speedDirection,
+                                             posX[i], posY[i], speed[i], speedDirection[i],
                                              cells->at (0),
                                              gNBs->at (0),
                                              0, //handover false!
-                                             Mobility::RANDOM_DIRECTION);
+                                             Mobility::LINEAR_MOVEMENT);
+      // UserEquipment* ue = new UserEquipment (idUE,
+      //                                        posX, posY, speed, speedDirection,
+      //                                        cells->at (0),
+      //                                        gNBs->at (0),
+      //                                        0, //handover false!
+      //                                        Mobility::LINEAR_MOVEMENT);
 
-      cout << "Created UE - id " << idUE << " position " << posX << " " << posY << " direction " << speedDirection << endl;
+      //cout << "Created UE - id " << idUE << " position " << posX << " " << posY << " direction " << speedDirection << endl;
 
-      ue->GetMobilityModel()->GetAbsolutePosition()->Print();
+      //ue->GetMobilityModel()->GetAbsolutePosition()->Print();
+      //ue->GetMobilityModel()->SetSpeed();
+      //ue->GetMobilityModel()->SetSpeedDirection();
       ue->GetPhy ()->SetDlChannel (gNBs->at (0)->GetPhy ()->GetDlChannel ());
       ue->GetPhy ()->SetUlChannel (gNBs->at (0)->GetPhy ()->GetUlChannel ());
 
@@ -292,227 +308,9 @@ static void SingleCellWithInterference (int argc, char *argv[])
         }
 
       // CREATE DOWNLINK APPLICATION FOR THIS UE
-      double start_time = 0.1 + GetRandomVariable (5.);
+      double start_time = 0.0;// + GetRandomVariable (5.);
       double duration_time = start_time + flow_duration;
 
-      // *** voip application
-      for (int j = 0; j < nbVoIP; j++)
-        {
-          // create application
-          VoIPApplication[voipApplication].SetSource (gw);
-          VoIPApplication[voipApplication].SetDestination (ue);
-          VoIPApplication[voipApplication].SetApplicationID (applicationID);
-          VoIPApplication[voipApplication].SetStartTime(start_time);
-          VoIPApplication[voipApplication].SetStopTime(duration_time);
-
-          // create qos parameters
-          if (downlink_scheduler_type == GNodeB::DLScheduler_TYPE_FLS)
-            {
-              QoSForFLS *qos = new QoSForFLS ();
-              qos->SetMaxDelay (maxDelay);
-              if (maxDelay == 0.1)
-                {
-                  cout << "Target Delay = 0.1 s, M = 9" << endl;
-                  qos->SetNbOfCoefficients (9);
-                }
-              else if (maxDelay == 0.08)
-                {
-                  cout << "Target Delay = 0.08 s, M = 7" << endl;
-                  qos->SetNbOfCoefficients (7);
-                }
-              else if (maxDelay == 0.06)
-                {
-                  cout << "Target Delay = 0.06 s, M = 5" << endl;
-                  qos->SetNbOfCoefficients (5);
-                }
-              else if (maxDelay == 0.04)
-                {
-                  cout << "Target Delay = 0.04 s, M = 3" << endl;
-                  qos->SetNbOfCoefficients (3);
-                }
-              else
-                {
-                  cout << "ERROR: target delay is not available"<< endl;
-                  return;
-                }
-
-              VoIPApplication[voipApplication].SetQoSParameters (qos);
-            }
-          else if (downlink_scheduler_type == GNodeB::DLScheduler_TYPE_EXP)
-            {
-              QoSForEXP *qos = new QoSForEXP ();
-              qos->SetMaxDelay (maxDelay);
-              VoIPApplication[voipApplication].SetQoSParameters (qos);
-            }
-          else if (downlink_scheduler_type == GNodeB::DLScheduler_TYPE_MLWDF)
-            {
-              QoSForM_LWDF *qos = new QoSForM_LWDF ();
-              qos->SetMaxDelay (maxDelay);
-              VoIPApplication[voipApplication].SetQoSParameters (qos);
-            }
-          else
-            {
-              QoSParameters *qos = new QoSParameters ();
-              qos->SetMaxDelay (maxDelay);
-              VoIPApplication[voipApplication].SetQoSParameters (qos);
-            }
-
-
-          //create classifier parameters
-          ClassifierParameters *cp = new ClassifierParameters (gw->GetIDNetworkNode(),
-              ue->GetIDNetworkNode(),
-              0,
-              destinationPort,
-              TransportProtocol::TRANSPORT_PROTOCOL_TYPE_UDP);
-          VoIPApplication[voipApplication].SetClassifierParameters (cp);
-
-          cout << "CREATED VOIP APPLICATION, ID " << applicationID << endl;
-
-          //update counter
-          destinationPort++;
-          applicationID++;
-          voipApplication++;
-        }
-
-
-      // *** video application
-      for (int j = 0; j < nbVideo; j++)
-        {
-          // create application
-          VideoApplication[videoApplication].SetSource (gw);
-          VideoApplication[videoApplication].SetDestination (ue);
-          VideoApplication[videoApplication].SetApplicationID (applicationID);
-          VideoApplication[videoApplication].SetStartTime(start_time);
-          VideoApplication[videoApplication].SetStopTime(duration_time);
-
-          switch (videoBitRate)
-            {
-            case 128:
-              {
-                VideoApplication[videoApplication].LoadInternalTrace(&foreman_h264_128k);
-//                  VideoApplication[videoApplication].LoadInternalTrace(&highway_h264_128k);
-//                  VideoApplication[videoApplication].LoadInternalTrace(&mobile_h264_128k);
-                cout << "  selected video @ 128k"<< endl;
-                break;
-              }
-            case 242:
-              {
-                VideoApplication[videoApplication].LoadInternalTrace(&foreman_h264_242k);
-                cout << "  selected video @ 242k"<< endl;
-                break;
-              }
-            case 440:
-              {
-                VideoApplication[videoApplication].LoadInternalTrace(&foreman_h264_440k);
-                cout << "  selected video @ 440k"<< endl;
-                break;
-              }
-            default:
-              {
-                cout << "  Unsupported video bitrate!"<< endl;
-                exit(1);
-              }
-            }
-
-          // create qos parameters
-          if (downlink_scheduler_type == GNodeB::DLScheduler_TYPE_FLS)
-            {
-              QoSForFLS *qos = new QoSForFLS ();
-              qos->SetMaxDelay (maxDelay);
-              if (maxDelay == 0.1)
-                {
-                  cout << "Target Delay = 0.1 s, M = 9" << endl;
-                  qos->SetNbOfCoefficients (9);
-                }
-              else if (maxDelay == 0.08)
-                {
-                  cout << "Target Delay = 0.08 s, M = 7" << endl;
-                  qos->SetNbOfCoefficients (7);
-                }
-              else if (maxDelay == 0.06)
-                {
-                  cout << "Target Delay = 0.06 s, M = 5" << endl;
-                  qos->SetNbOfCoefficients (5);
-                }
-              else if (maxDelay == 0.04)
-                {
-                  cout << "Target Delay = 0.04 s, M = 3" << endl;
-                  qos->SetNbOfCoefficients (3);
-                }
-              else
-                {
-                  cout << "ERROR: target delay is not available"<< endl;
-                  return;
-                }
-              VideoApplication[videoApplication].SetQoSParameters (qos);
-            }
-          else if (downlink_scheduler_type == GNodeB::DLScheduler_TYPE_EXP)
-            {
-              QoSForEXP *qos = new QoSForEXP ();
-              qos->SetMaxDelay (maxDelay);
-              VideoApplication[videoApplication].SetQoSParameters (qos);
-            }
-          else if (downlink_scheduler_type == GNodeB::DLScheduler_TYPE_MLWDF)
-            {
-              QoSForM_LWDF *qos = new QoSForM_LWDF ();
-              qos->SetMaxDelay (maxDelay);
-              VideoApplication[videoApplication].SetQoSParameters (qos);
-            }
-          else
-            {
-              QoSParameters *qos = new QoSParameters ();
-              qos->SetMaxDelay (maxDelay);
-              VideoApplication[videoApplication].SetQoSParameters (qos);
-            }
-
-
-          //create classifier parameters
-          ClassifierParameters *cp = new ClassifierParameters (gw->GetIDNetworkNode(),
-              ue->GetIDNetworkNode(),
-              0,
-              destinationPort,
-              TransportProtocol::TRANSPORT_PROTOCOL_TYPE_UDP);
-          VideoApplication[videoApplication].SetClassifierParameters (cp);
-
-          cout << "CREATED VIDEO APPLICATION, ID " << applicationID << endl;
-
-          //update counter
-          destinationPort++;
-          applicationID++;
-          videoApplication++;
-        }
-
-      // *** be application
-      for (int j = 0; j < nbBE; j++)
-        {
-          // create application
-          BEApplication[beApplication].SetSource (gw);
-          BEApplication[beApplication].SetDestination (ue);
-          BEApplication[beApplication].SetApplicationID (applicationID);
-          BEApplication[beApplication].SetStartTime(start_time);
-          BEApplication[beApplication].SetStopTime(duration_time);
-
-
-          // create qos parameters
-          QoSParameters *qosParameters = new QoSParameters ();
-          BEApplication[beApplication].SetQoSParameters (qosParameters);
-
-
-          //create classifier parameters
-          ClassifierParameters *cp = new ClassifierParameters (gw->GetIDNetworkNode(),
-              ue->GetIDNetworkNode(),
-              0,
-              destinationPort,
-              TransportProtocol::TRANSPORT_PROTOCOL_TYPE_UDP);
-          BEApplication[beApplication].SetClassifierParameters (cp);
-
-          cout << "CREATED BE APPLICATION, ID " << applicationID << endl;
-
-          //update counter
-          destinationPort++;
-          applicationID++;
-          beApplication++;
-        }
 
       // *** cbr application
       for (int j = 0; j < nbCBR; j++)
@@ -523,8 +321,9 @@ static void SingleCellWithInterference (int argc, char *argv[])
           CBRApplication[cbrApplication].SetApplicationID (applicationID);
           CBRApplication[cbrApplication].SetStartTime(start_time);
           CBRApplication[cbrApplication].SetStopTime(duration_time);
-          CBRApplication[cbrApplication].SetInterval (0.04);
-          CBRApplication[cbrApplication].SetSize (5);
+          CBRApplication[cbrApplication].SetInterval (0.25);
+          CBRApplication[cbrApplication].SetSize (120);
+          //ADS-B size is 120 bits
 
           // create qos parameters
           QoSParameters *qosParameters = new QoSParameters ();
@@ -541,7 +340,7 @@ static void SingleCellWithInterference (int argc, char *argv[])
               TransportProtocol::TRANSPORT_PROTOCOL_TYPE_UDP);
           CBRApplication[cbrApplication].SetClassifierParameters (cp);
 
-          cout << "CREATED CBR APPLICATION, ID " << applicationID << endl;
+          //cout << "CREATED CBR APPLICATION, ID " << applicationID << endl;
 
           //update counter
           destinationPort++;
@@ -557,16 +356,17 @@ static void SingleCellWithInterference (int argc, char *argv[])
 
   simulator->SetStop(duration);
   simulator->Run ();
-
-
+  simulator->Reset();
+  //std::cout << "WE MADE IT TO THE END OF THE 5G SIMULATOR" << endl;
 
   //Delete created objects
+  delete gw;
   cells->clear ();
   delete cells;
   gNBs->clear ();
   delete gNBs;
-  delete frameManager;
+  //delete frameManager;
   //delete nm;
-  delete simulator;
+  //delete simulator;
 
 }

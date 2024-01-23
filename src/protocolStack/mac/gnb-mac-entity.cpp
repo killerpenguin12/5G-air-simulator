@@ -152,7 +152,7 @@ DEBUG_LOG_START_1(SIM_ENV_TEST_CQI_FEEDBACKS)
         {
           cout << cqi << " ";
         }
-      cout << endl;
+      //cout << endl;
 DEBUG_LOG_END
 
 DEBUG_LOG_START_1(SIM_ENV_AMC_MAPPING)
@@ -161,14 +161,14 @@ DEBUG_LOG_START_1(SIM_ENV_AMC_MAPPING)
         {
           cout << cqi << " ";
         }
-      cout << endl;
+      //cout << endl;
 
       cout << "\t MCS: ";
       for (auto cqi : cqiFeedback)
         {
           cout << amc->GetMCSFromCQI (cqi) << " ";
         }
-      cout << endl;
+      //cout << endl;
 
       cout << "\t TB: ";
       for (auto cqi : cqiFeedback)
@@ -176,7 +176,7 @@ DEBUG_LOG_START_1(SIM_ENV_AMC_MAPPING)
           cout << amc->GetTBSizeFromMCS(
                       amc->GetMCSFromCQI (cqi)) << " ";
         }
-      cout << endl;
+      //cout << endl;
 DEBUG_LOG_END
 
 

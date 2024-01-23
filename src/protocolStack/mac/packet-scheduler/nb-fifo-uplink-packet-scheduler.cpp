@@ -259,7 +259,7 @@ DEBUG_LOG_END
         }
 
 DEBUG_LOG_START_1(SIM_ENV_SCHEDULER_DEBUG_FIFO)
-      cout << endl;
+      //cout << endl;
       cout << "SF " << currentSF;
       printQ();
       printMap();
@@ -270,32 +270,32 @@ DEBUG_LOG_END
 
 void nbFifoUplinkPacketScheduler::printMap()
 {
-  cout << "- ID\t";
+  //cout << "- ID\t";
   for (auto id : m_RUmap[0])
     {
       cout << id << "\t";
     }
-  cout << endl << "- TTI\t";
+  //cout << endl << "- TTI\t";
   for (auto tti : m_RUmap[1])
     {
       cout << tti << "\t";
     }
-  cout << endl << "- MCS\t";
+  //cout << endl << "- MCS\t";
   for (auto mcs : m_RUmap[2])
     {
       cout << mcs << "\t";
     }
-  cout << endl << "- TBS\t";
+  //cout << endl << "- TBS\t";
   for (auto tbs : m_RUmap[3])
     {
       cout << tbs << "\t";
     }
-  cout << endl << "- RU\t";
+  //cout << endl << "- RU\t";
   for (auto ru : m_RUmap[4])
     {
       cout << ru << "\t";
     }
-  cout << endl;
+  //cout << endl;
 }
 
 
@@ -308,5 +308,5 @@ void nbFifoUplinkPacketScheduler::printQ()
       id = scheduledUser.m_userToSchedule->GetIDNetworkNode();
       cout << id << " ";
     }
-  cout << endl;
+  //cout << endl;
 }

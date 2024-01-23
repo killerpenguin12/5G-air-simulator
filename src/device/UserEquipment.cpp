@@ -82,12 +82,17 @@ UserEquipment::UserEquipment (int idElement,
     {
       m = new LinearMovement ();
     }
+  else if (model == Mobility::INPUT)
+    {
+      m = new LinearMovement ();
+    }
   else
     {
       cout << "ERROR: incorrect Mobility Model"<< endl;
       exit(1);
     }
-  CartesianCoordinates *position = new CartesianCoordinates (posx, posy, 1.5);
+    //Coulton HERE we are setting the height of the vehicles. 1.5 I think should be the base.
+  CartesianCoordinates *position = new CartesianCoordinates (posx, posy, 40.5);
   m->SetHandover (handover);
   m->SetAbsolutePosition (position);
   m->SetDevice (this);
@@ -100,7 +105,7 @@ UserEquipment::UserEquipment (int idElement,
                               Simulator::Init ()->Now());
 
   delete position;
-
+  //Coulton Here
   UePhy *phy = new UePhy ();
   phy->SetDevice(this);
   phy->SetBandwidthManager (target->GetPhy ()->GetBandwidthManager ());

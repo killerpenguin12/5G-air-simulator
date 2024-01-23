@@ -51,6 +51,8 @@
 #include <stdlib.h>
 #include <cstring>
 
+
+//static void f5g_50MbpsEverywhere (int argc, string enviro, double isd1, double userD, int speed1,double duration1, int txMode1, int nbTx1, int nbMu1,int nbRx1, int sched_type1, int seed1)
 static void f5g_50MbpsEverywhere (int argc, char *argv[])
 {
   string environment(argv[2]); // "suburban" or "rural"
@@ -63,15 +65,26 @@ static void f5g_50MbpsEverywhere (int argc, char *argv[])
   int nbMu = atoi(argv[9]);
   int nbRx = atoi(argv[10]);
   int sched_type = atoi(argv[11]);
-  int seed;
-  if (argc==13)
-    {
-      seed = atoi(argv[12]);
-    }
-  else
-    {
-      seed = -1;
-    }
+  // int seed;
+  // string environment = enviro; // "suburban" or "rural"
+  // double isd = isd1; // km
+  // double userDensity = userD; // users/km2
+  // int speed = speed1; // km/h
+  // double duration = duration1; // s
+  // int txMode = txMode1;
+  // int nbTx = nbTx1;
+  // int nbMu = nbMu1;
+  // int nbRx = nbRx1;
+  // int sched_type = sched_type1;
+  int seed = 1;
+  // if (seed)
+  //   {
+  //     seed = seed;
+  //   }
+  // else
+  //   {
+  //     seed = -1;
+  //   }
 
   double bandwidth = 20; // MHz
   int etilt; //degrees
